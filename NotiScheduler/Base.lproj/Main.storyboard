@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yYq-Ky-mZt">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ap4-Bf-1uc">
+            <objects>
+                <viewController id="yYq-Ky-mZt" customClass="ViewController" customModule="NotiScheduler" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="80R-08-LqR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2N-vV-yR2">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="barTintColor" red="0.57718414070000001" green="0.71927982570000004" blue="0.31773069500000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Schedule" id="vQ1-Mi-hM1">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="tb7-SE-73D">
+                                            <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ehl-bj-XoZ">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="OnOffCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OnOffCell" rowHeight="83" id="9dc-AN-g0T" userLabel="OnOffTable" customClass="OnOffCell" customModule="NotiScheduler" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="83"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9dc-AN-g0T" id="qWh-9N-MVO" customClass="OnOffCell" customModule="NotiScheduler" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="83"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule On/Off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGi-Jh-BPN">
+                                                    <rect key="frame" x="10" y="29.5" width="146" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JCP-Ob-eeV">
+                                                    <rect key="frame" x="355" y="26" width="51" height="31"/>
+                                                    <color key="onTintColor" red="0.54117647059999996" green="0.73056573584718321" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nGi-Jh-BPN" firstAttribute="leading" secondItem="qWh-9N-MVO" secondAttribute="leading" constant="10" id="3gZ-Fc-Itb"/>
+                                                <constraint firstAttribute="trailing" secondItem="JCP-Ob-eeV" secondAttribute="trailing" constant="10" id="Ba1-bo-JFv"/>
+                                                <constraint firstItem="JCP-Ob-eeV" firstAttribute="centerY" secondItem="qWh-9N-MVO" secondAttribute="centerY" id="KDs-5O-Yev"/>
+                                                <constraint firstItem="nGi-Jh-BPN" firstAttribute="centerY" secondItem="qWh-9N-MVO" secondAttribute="centerY" id="qKk-vn-aTN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="OnOffCell"/>
+                                        <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="scheduleOnOffButton" destination="JCP-Ob-eeV" id="V02-1B-ifs"/>
+                                            <outlet property="scheduleOnOffLabel" destination="nGi-Jh-BPN" id="3JM-xn-5jU"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SchedulebarCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="476" id="lkR-Ee-9jB" customClass="SchedulebarCell" customModule="NotiScheduler" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="107.5" width="414" height="476"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lkR-Ee-9jB" id="aWF-8H-0vU" customClass="SchedulebarCell" customModule="NotiScheduler" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="476"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5I-Bd-eDo">
+                                                    <rect key="frame" x="353" y="21" width="31" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.54117647059999996" green="0.73056573579999995" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="A5I-Bd-eDo" firstAttribute="top" secondItem="aWF-8H-0vU" secondAttribute="topMargin" constant="10" id="23S-69-Q8f"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="A5I-Bd-eDo" secondAttribute="trailing" constant="10" id="IoW-O5-meL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="schedulebarCell"/>
+                                        <connections>
+                                            <outlet property="addButton" destination="A5I-Bd-eDo" id="cp1-qo-5Cy"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pCM-av-cSA"/>
+                        <color key="backgroundColor" red="0.57743465900000002" green="0.70822829009999999" blue="0.34577259420000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="N2N-vV-yR2" firstAttribute="leading" secondItem="pCM-av-cSA" secondAttribute="leading" id="A23-4M-h3x"/>
+                            <constraint firstAttribute="bottom" secondItem="Ehl-bj-XoZ" secondAttribute="bottom" id="ChD-V1-7q9"/>
+                            <constraint firstItem="Ehl-bj-XoZ" firstAttribute="leading" secondItem="pCM-av-cSA" secondAttribute="leading" id="Ees-XX-pag"/>
+                            <constraint firstItem="pCM-av-cSA" firstAttribute="trailing" secondItem="Ehl-bj-XoZ" secondAttribute="trailing" id="Fvd-2r-avl"/>
+                            <constraint firstAttribute="trailing" secondItem="N2N-vV-yR2" secondAttribute="trailing" id="dzJ-hX-5rI"/>
+                            <constraint firstItem="Ehl-bj-XoZ" firstAttribute="top" secondItem="N2N-vV-yR2" secondAttribute="bottom" id="sax-jO-Rbm"/>
+                            <constraint firstItem="N2N-vV-yR2" firstAttribute="top" secondItem="pCM-av-cSA" secondAttribute="top" id="vQd-NS-8wi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scheduleTableView" destination="Ehl-bj-XoZ" id="vzx-b1-R9M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SgE-vH-Sj4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-678.26086956521749" y="-173.4375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
