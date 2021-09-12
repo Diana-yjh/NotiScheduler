@@ -9,6 +9,6 @@ import Foundation
 import UIKit
 
 class SchedulebarCell: UITableViewCell {
-    @IBOutlet weak var addButton: UILabel!
+    
     
 }

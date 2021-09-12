@@ -13,4 +13,5 @@ class OnOffCell: UITableViewCell {
     @IBOutlet weak var scheduleOnOffLabel: UILabel!
     @IBOutlet weak var scheduleOnOffButton: UISwitch!
     
+    
 }
