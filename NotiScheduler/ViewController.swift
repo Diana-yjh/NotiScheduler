@@ -78,21 +78,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //        }
 //    }
 //
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let section = indexPath.section
-//        let row = indexPath.row
-//
-//        switch section {
-//        case 0:
-//            if row == 0 {
-//                return 80
-//            } else {
-//                return 300
-//            }
-//        case 1:
-//            return 80
-//        default:
-//            return 0
-//        }
-//    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = indexPath.section
+        let row = indexPath.row
+
+        switch section {
+        case 0:
+            if row == 0 {
+                return 80
+            } else {
+                return 300
+            }
+        case 1:
+            return 80
+        default:
+            return 0
+        }
+    }
 }
