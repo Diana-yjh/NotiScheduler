@@ -12,7 +12,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scheduleTableView.estimatedRowHeight = 100
         scheduleTableView.rowHeight = UITableView.automaticDimension
         scheduleTableView.delegate = self
         scheduleTableView.dataSource = self
@@ -48,7 +47,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 return cell!
             }
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "OnOffCell")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell")
             return cell!
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OnOffCell")
