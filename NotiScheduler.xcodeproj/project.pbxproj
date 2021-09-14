@@ -64,7 +64,6 @@
 		8B3CC8E826E9C1EB0078F6A7 /* NotiScheduler */ = {
 			isa = PBXGroup;
 			children = (
-				8BF15A7B26F09868008AA901 /* img */,
 				8B3CC8E926E9C1EB0078F6A7 /* AppDelegate.swift */,
 				8B3CC8EB26E9C1EB0078F6A7 /* SceneDelegate.swift */,
 				8B3CC8ED26E9C1EB0078F6A7 /* ViewController.swift */,
@@ -78,13 +77,6 @@
 				8BF15A7926F09008008AA901 /* EditScheduleVC.swift */,
 			);
 			path = NotiScheduler;
-			sourceTree = "<group>";
-		};
-		8BF15A7B26F09868008AA901 /* img */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = img;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

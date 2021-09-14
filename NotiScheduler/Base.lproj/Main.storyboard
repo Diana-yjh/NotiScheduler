@@ -3,6 +3,7 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -340,65 +341,65 @@
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DayOnOffCell" rowHeight="45" id="zwT-00-mCG" customClass="DayOnOffCell">
                                                 <rect key="frame" x="0.0" y="104.33333396911621" width="375" height="45"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zwT-00-mCG" id="5L2-cb-VPH">
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zwT-00-mCG" id="5L2-cb-VPH">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="tBQ-1y-nVV">
+                                                        <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tBQ-1y-nVV">
                                                             <rect key="frame" x="10" y="0.0" width="355" height="45"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvx-43-GJD">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkc-E1-33k">
                                                                     <rect key="frame" x="0.0" y="0.0" width="50.666666666666664" height="45"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <state key="normal" title="Button" image="s.circle.fill" catalog="system">
-                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                    <color key="tintColor" red="0.53582071520618557" green="0.53582071520618557" blue="0.53582071520618557" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
+                                                                    <state key="normal" title="Button">
+                                                                        <imageReference key="image" image="s.circle.fill" catalog="system" symbolScale="large"/>
                                                                     </state>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4L3-Gt-T76">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FxS-KS-13z">
                                                                     <rect key="frame" x="50.666666666666671" y="0.0" width="50.666666666666671" height="45"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <state key="normal" title="Button" image="m.circle.fill" catalog="system">
-                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                    <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
+                                                                    <state key="normal" title="Button">
+                                                                        <imageReference key="image" image="m.circle.fill" catalog="system" symbolScale="large"/>
                                                                     </state>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kQR-bc-FGi">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Vy-cD-6Zq">
                                                                     <rect key="frame" x="101.33333333333333" y="0.0" width="50.666666666666671" height="45"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <state key="normal" title="Button" image="t.circle.fill" catalog="system">
-                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                    <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
+                                                                    <state key="normal" title="Button">
+                                                                        <imageReference key="image" image="t.circle.fill" catalog="system" symbolScale="large"/>
                                                                     </state>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHB-YL-qqU">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qi-M4-59P">
                                                                     <rect key="frame" x="152" y="0.0" width="51" height="45"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button" image="w.circle.fill" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3XK-dD-ukH">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cc-px-Jqf">
                                                                     <rect key="frame" x="203" y="0.0" width="50.666666666666657" height="45"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button" image="t.circle.fill" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sit-23-UWK">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ot-jC-PqW">
                                                                     <rect key="frame" x="253.66666666666666" y="0.0" width="50.666666666666657" height="45"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button" image="f.circle.fill" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAo-gf-6QD">
+                                                                <button opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFu-yx-nkt">
                                                                     <rect key="frame" x="304.33333333333331" y="0.0" width="50.666666666666686" height="45"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button" image="s.circle.fill" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
