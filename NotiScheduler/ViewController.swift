@@ -12,6 +12,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scheduleTableView.tableFooterView = UIView()
         scheduleTableView.rowHeight = UITableView.automaticDimension
         scheduleTableView.delegate = self
         scheduleTableView.dataSource = self
@@ -65,18 +66,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return ""
         }
     }
-    
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        switch section {
-//        case 0:
-//            return 0
-//        case 1:
-//            return 40
-//        default:
-//            return 0
-//        }
-//    }
-//
+  
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let section = indexPath.section
         let row = indexPath.row
