@@ -10,8 +10,22 @@ import UIKit
 
 class OnOffCell: UITableViewCell {
     
-    @IBOutlet weak var scheduleOnOffLabel: UILabel!
-    @IBOutlet weak var scheduleOnOffButton: UISwitch!
+    override func layoutSubviews(){
+        super.layoutSubviews()
+    }
+}
+
+class SchedulebarCell: UITableViewCell {
+    
+    override func layoutSubviews(){
+        super.layoutSubviews()
+    }
+}
+
+class ScheduleCell: UITableViewCell {
+    
+    @IBOutlet weak var scheduleNumber: UILabel!
+    @IBOutlet weak var dateAndTime: UILabel!
     
     override func layoutSubviews(){
         super.layoutSubviews()
