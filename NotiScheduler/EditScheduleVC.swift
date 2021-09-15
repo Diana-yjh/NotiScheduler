@@ -31,7 +31,7 @@ class EditScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 4
+            return 5
         default:
             return 0
         }
@@ -44,9 +44,12 @@ class EditScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelega
             let cell = tableView.dequeueReusableCell(withIdentifier: "OnOffCell")
             return cell!
         } else if row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleNameCell")
+            return cell!
+        } else if row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DayOnOffCell")
             return cell!
-        }else if row == 2 {
+        } else if row == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TimeCell")
             return cell!
         } else {
@@ -58,9 +61,9 @@ class EditScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let row = indexPath.row
         
-        if row == 1 || row == 3 {
+        if row == 2 || row == 4 {
             return 40
-        } else if row == 2 {
+        } else if row == 3 {
             return 150
         } else {
             return 80
