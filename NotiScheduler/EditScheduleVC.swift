@@ -17,12 +17,10 @@ class EditScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelega
         editScheduleTable.rowHeight = UITableView.automaticDimension
         editScheduleTable.delegate = self
         editScheduleTable.dataSource = self
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationController?.navigationBar.tintColor = .white
     }
-    
-    @IBAction func toPreviousView(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-    }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         print("called")
         return 1
