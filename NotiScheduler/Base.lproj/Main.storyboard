@@ -33,7 +33,6 @@
                                                     <rect key="frame" x="311" y="24.666666666666671" width="51" height="31"/>
                                                     <color key="onTintColor" red="0.54117647059999996" green="0.73056573584718321" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <connections>
-                                                        <action selector="onOffButton:" destination="yYq-Ky-mZt" eventType="valueChanged" id="KWk-aM-Tb9"/>
                                                         <action selector="onOffButton:" destination="ShI-Z9-hW6" eventType="valueChanged" id="N7W-5h-aEP"/>
                                                     </connections>
                                                 </switch>
@@ -227,13 +226,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="349.33333333333331" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdI-pB-0yZ">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdI-pB-0yZ">
                                                     <rect key="frame" x="53.999999999999993" y="20" width="120.33333333333331" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date &amp; Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubH-qr-erb">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date &amp; Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubH-qr-erb">
                                                     <rect key="frame" x="54.000000000000007" y="44.333333333333336" width="74.666666666666686" height="15.666666666666664"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.5411764979" green="0.71372550729999995" blue="0.2823529541" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -264,6 +263,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="dateAndTime" destination="ubH-qr-erb" id="OPu-cE-U1f"/>
+                                            <outlet property="scheduleIcon" destination="RJV-BT-4y3" id="Voz-iN-qcs"/>
                                             <outlet property="scheduleNumber" destination="EdI-pB-0yZ" id="s8M-Eb-H6W"/>
                                             <segue destination="mQO-un-SWO" kind="show" id="n2E-HL-flQ"/>
                                         </connections>
@@ -285,6 +285,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Add" image="plus.circle" catalog="system" id="HFR-fI-mFR">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
+                                <action selector="addScheduleButton:" destination="yYq-Ky-mZt" id="p7E-DV-ztV"/>
                                 <segue destination="mQO-un-SWO" kind="show" id="0bB-d7-V5T"/>
                             </connections>
                         </barButtonItem>
@@ -313,7 +314,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OnOffCell" rowHeight="80" id="HwQ-gv-eh8" customClass="OnOffCell" customModule="NotiScheduler" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier=" " preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OnOffCell" rowHeight="80" id="HwQ-gv-eh8" customClass="OnOffCell2" customModule="NotiScheduler" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="24.333333969116211" width="375" height="80"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HwQ-gv-eh8" id="tdB-MB-ms2">
@@ -324,54 +325,47 @@
                                                             <rect key="frame" x="311" y="24.666666666666671" width="51" height="31"/>
                                                             <color key="onTintColor" red="0.54117647059999996" green="0.73056573579999995" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </switch>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스케줄 On/Off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEm-pt-q5y">
-                                                            <rect key="frame" x="15.000000000000007" y="0.0" width="99.666666666666686" height="80"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mlz-wL-KT6">
+                                                            <rect key="frame" x="15" y="0.0" width="120" height="60"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="120" id="Wxi-VY-WOT"/>
+                                                                <constraint firstAttribute="height" constant="60" id="j0g-ZJ-INO"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <state key="normal" title="스케줄 이름">
+                                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="editScheduleName:" destination="HwQ-gv-eh8" eventType="touchUpInside" id="2kp-ZS-hhT"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44Z-LA-Q4S">
+                                                            <rect key="frame" x="15" y="38" width="120" height="29"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="120" id="nRK-Xl-sXI"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <state key="normal" title="이름 변경">
+                                                                <color key="titleColor" red="0.57647058819999997" green="0.71764705880000002" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="editScheduleName:" destination="HwQ-gv-eh8" eventType="touchUpInside" id="nE9-p9-pU2"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="OEm-pt-q5y" firstAttribute="leading" secondItem="tdB-MB-ms2" secondAttribute="leading" constant="15" id="41p-2P-sGF"/>
-                                                        <constraint firstAttribute="bottom" secondItem="OEm-pt-q5y" secondAttribute="bottom" id="4Co-RY-c54"/>
+                                                        <constraint firstAttribute="bottom" secondItem="44Z-LA-Q4S" secondAttribute="bottom" constant="13" id="D54-cr-AcS"/>
+                                                        <constraint firstItem="Mlz-wL-KT6" firstAttribute="top" secondItem="tdB-MB-ms2" secondAttribute="top" id="FYi-RK-dqh"/>
+                                                        <constraint firstItem="Mlz-wL-KT6" firstAttribute="leading" secondItem="tdB-MB-ms2" secondAttribute="leading" constant="15" id="IKm-zB-2I1"/>
                                                         <constraint firstItem="AtE-kf-V6H" firstAttribute="centerY" secondItem="tdB-MB-ms2" secondAttribute="centerY" id="QsB-1P-Rg7"/>
-                                                        <constraint firstItem="OEm-pt-q5y" firstAttribute="top" secondItem="tdB-MB-ms2" secondAttribute="top" id="TBV-Kh-MQV"/>
                                                         <constraint firstAttribute="trailing" secondItem="AtE-kf-V6H" secondAttribute="trailing" constant="15" id="ny7-Mc-3JW"/>
+                                                        <constraint firstItem="44Z-LA-Q4S" firstAttribute="leading" secondItem="tdB-MB-ms2" secondAttribute="leading" constant="15" id="xmM-cE-VPO"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleNameCell" rowHeight="80" id="Rxb-gm-cSy">
-                                                <rect key="frame" x="0.0" y="104.33333396911621" width="375" height="80"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rxb-gm-cSy" id="y9I-57-yOI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스케줄 이름 : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dos-pI-GGb">
-                                                            <rect key="frame" x="15" y="30" width="91.333333333333329" height="20.333333333333329"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Schedule Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XrQ-cT-j0o">
-                                                            <rect key="frame" x="121.33333333333333" y="23" width="238.66666666666669" height="34"/>
-                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                        </textField>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="dos-pI-GGb" firstAttribute="centerY" secondItem="y9I-57-yOI" secondAttribute="centerY" id="3Vg-qK-edD"/>
-                                                        <constraint firstAttribute="trailing" secondItem="XrQ-cT-j0o" secondAttribute="trailing" constant="15" id="Mow-kd-LGG"/>
-                                                        <constraint firstItem="XrQ-cT-j0o" firstAttribute="leading" secondItem="dos-pI-GGb" secondAttribute="trailing" constant="15" id="TkT-8Q-oLk"/>
-                                                        <constraint firstItem="dos-pI-GGb" firstAttribute="leading" secondItem="y9I-57-yOI" secondAttribute="leading" constant="15" id="UYe-S5-dMf"/>
-                                                        <constraint firstItem="XrQ-cT-j0o" firstAttribute="centerY" secondItem="y9I-57-yOI" secondAttribute="centerY" id="doX-KS-DGn"/>
-                                                    </constraints>
-                                                </tableViewCellContentView>
-                                            </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DayOnOffCell" rowHeight="45" id="zwT-00-mCG" customClass="DayOnOffCell">
-                                                <rect key="frame" x="0.0" y="184.33333396911621" width="375" height="45"/>
+                                                <rect key="frame" x="0.0" y="104.33333396911621" width="375" height="45"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zwT-00-mCG" id="5L2-cb-VPH">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
@@ -387,54 +381,75 @@
                                                                     <state key="normal" title="Button">
                                                                         <imageReference key="image" image="s.circle.fill" catalog="system" symbolScale="large"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="R9u-x7-l1v"/>
+                                                                    </connections>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FxS-KS-13z">
+                                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FxS-KS-13z">
                                                                     <rect key="frame" x="50.666666666666671" y="0.0" width="50.666666666666671" height="45"/>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button">
                                                                         <imageReference key="image" image="m.circle.fill" catalog="system" symbolScale="large"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="zdZ-3M-UAk"/>
+                                                                    </connections>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Vy-cD-6Zq">
+                                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Vy-cD-6Zq">
                                                                     <rect key="frame" x="101.33333333333333" y="0.0" width="50.666666666666671" height="45"/>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button">
                                                                         <imageReference key="image" image="t.circle.fill" catalog="system" symbolScale="large"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="3cT-Qk-AUJ"/>
+                                                                    </connections>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qi-M4-59P">
+                                                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qi-M4-59P">
                                                                     <rect key="frame" x="152" y="0.0" width="51" height="45"/>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button" image="w.circle.fill" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="AJj-dH-6e8"/>
+                                                                    </connections>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cc-px-Jqf">
+                                                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cc-px-Jqf">
                                                                     <rect key="frame" x="203" y="0.0" width="50.666666666666657" height="45"/>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button" image="t.circle.fill" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="Tcq-Gq-Zuc"/>
+                                                                    </connections>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ot-jC-PqW">
+                                                                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ot-jC-PqW">
                                                                     <rect key="frame" x="253.66666666666666" y="0.0" width="50.666666666666657" height="45"/>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button" image="f.circle.fill" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="smm-Dr-BBW"/>
+                                                                    </connections>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFu-yx-nkt">
+                                                                <button opaque="NO" tag="6" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFu-yx-nkt">
                                                                     <rect key="frame" x="304.33333333333331" y="0.0" width="50.666666666666686" height="45"/>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button" image="s.circle.fill" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="cGS-P6-LGn"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
@@ -448,8 +463,8 @@
                                                 </tableViewCellContentView>
                                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimeCell" rowHeight="150" id="OHR-Ld-HBE">
-                                                <rect key="frame" x="0.0" y="229.33333396911621" width="375" height="150"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimeCell" rowHeight="150" id="OHR-Ld-HBE" customClass="TimeCell" customModule="NotiScheduler" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="149.33333396911621" width="375" height="150"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OHR-Ld-HBE" id="gfE-9X-QLe">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
@@ -516,7 +531,7 @@
                                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                             </tableViewCell>
                                             <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DeleteCell" id="af0-qr-Zni">
-                                                <rect key="frame" x="0.0" y="379.33333396911621" width="375" height="43.666667938232422"/>
+                                                <rect key="frame" x="0.0" y="299.33333396911621" width="375" height="43.666667938232422"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="af0-qr-Zni" id="njk-ze-J3v">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
@@ -528,6 +543,9 @@
                                                             <state key="normal" title="삭제">
                                                                 <color key="titleColor" systemColor="systemRedColor"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="deleteScheduleButton:" destination="mQO-un-SWO" eventType="touchUpInside" id="uAw-Ga-WEL"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -596,7 +614,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="n2E-HL-flQ"/>
+        <segue reference="0bB-d7-V5T"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>

@@ -10,8 +10,9 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var scheduleTableView: UITableView!
     
-    public var status: Bool = false
-    public var count = 0
+    public var onOffButtonStatus: Bool = true
+    public var count = 2
+    public var scheduleStatus: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +27,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return 2
     }
     
+    @IBAction func addScheduleButton(_ sender: Any) {
+        let editScheduleVC = EditScheduleVC()
+        editScheduleVC.count = self.count
+        self.present(editScheduleVC, animated: false, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return 2
         case 1:
-            return 2  
+            return count
         default:
             return 0
         }
@@ -96,6 +103,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         if section == 1 {
             let DeleteAction = UIContextualAction(style: .destructive, title:  "삭제", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+                self.count -= 1
+                tableView.deleteRows(at: [indexPath], with: .fade)
                 print("Delete")
                 success(true)
             })

@@ -11,25 +11,35 @@ import UIKit
 class EditScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var editScheduleTable: UITableView!
     
+    public var count: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         editScheduleTable.tableFooterView = UIView()
         editScheduleTable.rowHeight = UITableView.automaticDimension
         editScheduleTable.delegate = self
         editScheduleTable.dataSource = self
+        
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.tintColor = .white
     }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         print("called")
         return 1
     }
     
+    @IBAction func deleteScheduleButton(_ sender: Any) {
+        count -= 1
+        let viewController = ViewController()
+        viewController.count = self.count
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 5
+            return 4
         default:
             return 0
         }
@@ -42,12 +52,9 @@ class EditScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelega
             let cell = tableView.dequeueReusableCell(withIdentifier: "OnOffCell")
             return cell!
         } else if row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleNameCell")
-            return cell!
-        } else if row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DayOnOffCell")
             return cell!
-        } else if row == 3 {
+        } else if row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TimeCell")
             return cell!
         } else {
@@ -59,9 +66,9 @@ class EditScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let row = indexPath.row
         
-        if row == 2 || row == 4 {
+        if row == 1 || row == 3 {
             return 40
-        } else if row == 3 {
+        } else if row == 2 {
             return 150
         } else {
             return 80
