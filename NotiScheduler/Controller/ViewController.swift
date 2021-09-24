@@ -11,9 +11,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var scheduleTableView: UITableView!
     
     public var onOffButtonStatus: Bool = true
-    public var count = 2
     public var scheduleStatus: Bool = true
-    
+    public var count: Int = 2
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         scheduleTableView.tableFooterView = UIView()
@@ -23,14 +23,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("called")
         return 2
-    }
-    
-    @IBAction func addScheduleButton(_ sender: Any) {
-        let editScheduleVC = EditScheduleVC()
-        editScheduleVC.count = self.count
-        self.present(editScheduleVC, animated: false, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

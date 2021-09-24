@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B2061E926F1E7D000FAF115 /* ManagerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2061E826F1E7D000FAF115 /* ManagerCell.swift */; };
+		8B2061E926F1E7D000FAF115 /* AddScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2061E826F1E7D000FAF115 /* AddScheduleCell.swift */; };
+		8B2DAA3826FC1CF200454B8E /* EditScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2DAA3726FC1CF200454B8E /* EditScheduleCell.swift */; };
+		8B2DAA3A26FC1CFE00454B8E /* EditScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2DAA3926FC1CFE00454B8E /* EditScheduleVC.swift */; };
 		8B3CC8EA26E9C1EB0078F6A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3CC8E926E9C1EB0078F6A7 /* AppDelegate.swift */; };
 		8B3CC8EC26E9C1EB0078F6A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3CC8EB26E9C1EB0078F6A7 /* SceneDelegate.swift */; };
 		8B3CC8EE26E9C1EB0078F6A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3CC8ED26E9C1EB0078F6A7 /* ViewController.swift */; };
@@ -15,11 +17,13 @@
 		8B3CC8F326E9C1F00078F6A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B3CC8F226E9C1F00078F6A7 /* Assets.xcassets */; };
 		8B3CC8F626E9C1F00078F6A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B3CC8F426E9C1F00078F6A7 /* LaunchScreen.storyboard */; };
 		8B3CC8FE26EAF9ED0078F6A7 /* OnOffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3CC8FD26EAF9ED0078F6A7 /* OnOffCell.swift */; };
-		8BF15A7A26F09008008AA901 /* EditScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF15A7926F09008008AA901 /* EditScheduleVC.swift */; };
+		8BF15A7A26F09008008AA901 /* AddScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF15A7926F09008008AA901 /* AddScheduleVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8B2061E826F1E7D000FAF115 /* ManagerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerCell.swift; sourceTree = "<group>"; };
+		8B2061E826F1E7D000FAF115 /* AddScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleCell.swift; sourceTree = "<group>"; };
+		8B2DAA3726FC1CF200454B8E /* EditScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleCell.swift; sourceTree = "<group>"; };
+		8B2DAA3926FC1CFE00454B8E /* EditScheduleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleVC.swift; sourceTree = "<group>"; };
 		8B3CC8E626E9C1EB0078F6A7 /* NotiScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotiScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B3CC8E926E9C1EB0078F6A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B3CC8EB26E9C1EB0078F6A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,7 +33,7 @@
 		8B3CC8F526E9C1F00078F6A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B3CC8F726E9C1F00078F6A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B3CC8FD26EAF9ED0078F6A7 /* OnOffCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnOffCell.swift; sourceTree = "<group>"; };
-		8BF15A7926F09008008AA901 /* EditScheduleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleVC.swift; sourceTree = "<group>"; };
+		8BF15A7926F09008008AA901 /* AddScheduleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +47,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B2DAA3626FC072600454B8E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8B2061E826F1E7D000FAF115 /* AddScheduleCell.swift */,
+				8B3CC8FD26EAF9ED0078F6A7 /* OnOffCell.swift */,
+				8B2DAA3726FC1CF200454B8E /* EditScheduleCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		8B2DAA3B26FD536800454B8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8B2DAA3926FC1CFE00454B8E /* EditScheduleVC.swift */,
+				8BF15A7926F09008008AA901 /* AddScheduleVC.swift */,
+				8B3CC8ED26E9C1EB0078F6A7 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		8B3CC8DD26E9C1EB0078F6A7 = {
 			isa = PBXGroup;
 			children = (
@@ -62,16 +86,14 @@
 		8B3CC8E826E9C1EB0078F6A7 /* NotiScheduler */ = {
 			isa = PBXGroup;
 			children = (
+				8B2DAA3B26FD536800454B8E /* Controller */,
+				8B2DAA3626FC072600454B8E /* Cells */,
 				8B3CC8E926E9C1EB0078F6A7 /* AppDelegate.swift */,
 				8B3CC8EB26E9C1EB0078F6A7 /* SceneDelegate.swift */,
-				8B3CC8ED26E9C1EB0078F6A7 /* ViewController.swift */,
-				8B3CC8FD26EAF9ED0078F6A7 /* OnOffCell.swift */,
 				8B3CC8EF26E9C1EB0078F6A7 /* Main.storyboard */,
 				8B3CC8F226E9C1F00078F6A7 /* Assets.xcassets */,
 				8B3CC8F426E9C1F00078F6A7 /* LaunchScreen.storyboard */,
 				8B3CC8F726E9C1F00078F6A7 /* Info.plist */,
-				8BF15A7926F09008008AA901 /* EditScheduleVC.swift */,
-				8B2061E826F1E7D000FAF115 /* ManagerCell.swift */,
 			);
 			path = NotiScheduler;
 			sourceTree = "<group>";
@@ -147,10 +169,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B3CC8EE26E9C1EB0078F6A7 /* ViewController.swift in Sources */,
+				8B2DAA3826FC1CF200454B8E /* EditScheduleCell.swift in Sources */,
 				8B3CC8EA26E9C1EB0078F6A7 /* AppDelegate.swift in Sources */,
+				8B2DAA3A26FC1CFE00454B8E /* EditScheduleVC.swift in Sources */,
 				8B3CC8EC26E9C1EB0078F6A7 /* SceneDelegate.swift in Sources */,
-				8B2061E926F1E7D000FAF115 /* ManagerCell.swift in Sources */,
-				8BF15A7A26F09008008AA901 /* EditScheduleVC.swift in Sources */,
+				8B2061E926F1E7D000FAF115 /* AddScheduleCell.swift in Sources */,
+				8BF15A7A26F09008008AA901 /* AddScheduleVC.swift in Sources */,
 				8B3CC8FE26EAF9ED0078F6A7 /* OnOffCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

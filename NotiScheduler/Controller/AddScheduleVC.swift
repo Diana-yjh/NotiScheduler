@@ -8,28 +8,43 @@
 import Foundation
 import UIKit
 
-class EditScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var editScheduleTable: UITableView!
+class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegate, OnOffCell2Delegate {
+    func showAlert() {
+        print("showAlert called")
+        let alert = UIAlertController(title: "이름 변경", message: "스케줄 이름을 변경합니다.", preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "확인", style: .default) {_ in
+            
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        alert.addTextField { (myTextField) in
+            myTextField.placeholder = "이름"
+        }
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @IBOutlet weak var addScheduleTable: UITableView!
     
     public var count: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        editScheduleTable.tableFooterView = UIView()
-        editScheduleTable.rowHeight = UITableView.automaticDimension
-        editScheduleTable.delegate = self
-        editScheduleTable.dataSource = self
+        addScheduleTable.tableFooterView = UIView()
+        addScheduleTable.rowHeight = UITableView.automaticDimension
+        addScheduleTable.delegate = self
+        addScheduleTable.dataSource = self
         
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.tintColor = .white
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("called")
         return 1
     }
     
-    @IBAction func deleteScheduleButton(_ sender: Any) {
+    @IBAction func cancelScheduleButton(_ sender: Any) {
         count -= 1
         let viewController = ViewController()
         viewController.count = self.count
@@ -49,8 +64,9 @@ class EditScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelega
         let row = indexPath.row
         
         if row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "OnOffCell")
-            return cell!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "OnOffCell2") as! OnOffCell2
+            cell.delegate = self
+            return cell
         } else if row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DayOnOffCell")
             return cell!
@@ -58,7 +74,7 @@ class EditScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelega
             let cell = tableView.dequeueReusableCell(withIdentifier: "TimeCell")
             return cell!
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DeleteCell")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CancelCell")
             return cell!
         }
     }
