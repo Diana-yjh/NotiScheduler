@@ -24,7 +24,7 @@ class OnOffCell2: UITableViewCell {
     }
     
     @IBAction func editScheduleNameButton(_ sender: Any) {
-        print("called")
+        print("2")
         let buttonText: String = scheduleName.currentTitle!
         self.delegate?.showAlert(scheduleName: buttonText)
     }
