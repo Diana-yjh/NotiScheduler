@@ -9,19 +9,21 @@ import Foundation
 import UIKit
 
 class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegate, OnOffCell2Delegate {
-    func showAlert() {
+    func showAlert(scheduleName: String) {
         print("showAlert called")
-        let alert = UIAlertController(title: "이름 변경", message: "스케줄 이름을 변경합니다.", preferredStyle: UIAlertController.Style.alert)
-        let okAction = UIAlertAction(title: "확인", style: .default) {_ in
-            
-        }
-        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        let alert = UIAlertController(title: "스케줄 이름 변경", message: "변경할 이름을 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
         alert.addTextField { (myTextField) in
-            myTextField.placeholder = "이름"
+            myTextField.placeholder = scheduleName
         }
+        
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
+        alert.addAction(UIAlertAction(title: "확인", style: .default) {(action) -> Void in
+            if let text = alert.textFields?[0].text {
+                print("text = \(text)")
+            }
+        })
+        
         present(alert, animated: true, completion: nil)
     }
     

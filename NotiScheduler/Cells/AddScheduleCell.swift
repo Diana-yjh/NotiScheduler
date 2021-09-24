@@ -9,16 +9,8 @@ import Foundation
 import UIKit
 
 protocol OnOffCell2Delegate {
-    func showAlert()
+    func showAlert(scheduleName: String)
 }
-
-//extension OnOffCell2: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSeletedItemAt indexPath: IndexPath) {
-//        if let delegate = delegate {
-//            delegate.showAlert()
-//        }
-//    }
-//}
 
 class OnOffCell2: UITableViewCell {
     
@@ -33,7 +25,8 @@ class OnOffCell2: UITableViewCell {
     
     @IBAction func editScheduleNameButton(_ sender: Any) {
         print("called")
-        self.delegate?.showAlert()
+        let buttonText: String = scheduleName.currentTitle!
+        self.delegate?.showAlert(scheduleName: buttonText)
     }
 }
 
