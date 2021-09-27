@@ -13,22 +13,21 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     @IBOutlet weak var addScheduleTable: UITableView!
     
     public var count: Int = 0
-    public var returnText: String = "스케줄 이름"
+    public var scheduleName: String = "스케줄 이름"
     
     func showAlert() {
         
         let alert = UIAlertController(title: "스케줄 이름 변경", message: "변경할 이름을 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
         
         alert.addTextField {(myTextField) in
-            myTextField.placeholder = self.returnText
+            myTextField.placeholder = self.scheduleName
         }
         alert.addAction(UIAlertAction(title: "취소", style: .cancel))
         alert.addAction(UIAlertAction(title: "확인", style: .default) {(action) -> Void in
             if let text = alert.textFields?[0].text {
-                self.returnText = text
+                self.scheduleName = text
                 let indexPath = [IndexPath(row: 0, section: 0)]
-                self.addScheduleTable.reloadRows(at: indexPath, with: .automatic)
-                print("text = \(text)")
+                self.addScheduleTable.reloadRows(at: indexPath, with: .none)
             }
         })
         present(alert, animated: true, completion: nil)
@@ -51,12 +50,10 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         viewController.count = self.count
         self.dismiss(animated: true, completion: nil)
     }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -71,7 +68,7 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         
         if row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OnOffCell2") as! OnOffCell2
-            cell.scheduleName.setTitle(returnText, for: .normal)
+            cell.scheduleName.setTitle(scheduleName, for: .normal)
             cell.delegate = self
             return cell
         } else if row == 1 {

@@ -367,7 +367,7 @@
                                                     <outlet property="scheduleName" destination="Mlz-wL-KT6" id="d5o-1f-Z34"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DayOnOffCell" rowHeight="45" id="zwT-00-mCG" customClass="DayOnOffCell">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DayOnOffCell" rowHeight="45" id="zwT-00-mCG" customClass="DayOnOffCell" customModule="NotiScheduler" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="104.33333396911621" width="375" height="45"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zwT-00-mCG" id="5L2-cb-VPH">
@@ -377,23 +377,29 @@
                                                         <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tBQ-1y-nVV">
                                                             <rect key="frame" x="10" y="0.0" width="355" height="45"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkc-E1-33k">
+                                                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="sun" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkc-E1-33k">
                                                                     <rect key="frame" x="0.0" y="0.0" width="50.666666666666664" height="45"/>
-                                                                    <accessibility key="accessibilityConfiguration" label="0"/>
                                                                     <color key="tintColor" red="0.53582071520618557" green="0.53582071520618557" blue="0.53582071520618557" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button">
                                                                         <imageReference key="image" image="s.circle.fill" catalog="system" symbolScale="large"/>
+                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="eKE-VL-cyK"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FxS-KS-13z">
                                                                     <rect key="frame" x="50.666666666666671" y="0.0" width="50.666666666666671" height="45"/>
-                                                                    <accessibility key="accessibilityConfiguration" label="1"/>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button">
                                                                         <imageReference key="image" image="m.circle.fill" catalog="system" symbolScale="large"/>
+                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="5AV-zc-thH"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Vy-cD-6Zq">
                                                                     <rect key="frame" x="101.33333333333333" y="0.0" width="50.666666666666671" height="45"/>
@@ -401,42 +407,62 @@
                                                                     <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button">
                                                                         <imageReference key="image" image="t.circle.fill" catalog="system" symbolScale="large"/>
+                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
                                                                     <attributedString key="userComments">
                                                                         <fragment content="                                                                          "/>
                                                                     </attributedString>
+                                                                    <connections>
+                                                                        <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="H9g-E3-EHx"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qi-M4-59P">
                                                                     <rect key="frame" x="152" y="0.0" width="51" height="45"/>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
-                                                                    <state key="normal" title="Button" image="w.circle.fill" catalog="system">
+                                                                    <state key="normal" title="Button">
+                                                                        <imageReference key="image" image="w.circle.fill" catalog="system" symbolScale="large"/>
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="xK4-ex-iEa"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cc-px-Jqf">
                                                                     <rect key="frame" x="203" y="0.0" width="50.666666666666657" height="45"/>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
-                                                                    <state key="normal" title="Button" image="t.circle.fill" catalog="system">
+                                                                    <state key="normal" title="Button">
+                                                                        <imageReference key="image" image="t.circle.fill" catalog="system" symbolScale="large"/>
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="SrT-CC-cI6"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ot-jC-PqW">
                                                                     <rect key="frame" x="253.66666666666666" y="0.0" width="50.666666666666657" height="45"/>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
-                                                                    <state key="normal" title="Button" image="f.circle.fill" catalog="system">
+                                                                    <state key="normal" title="Button">
+                                                                        <imageReference key="image" image="f.circle.fill" catalog="system" symbolScale="large"/>
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="KOf-1z-Bgi"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" tag="6" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFu-yx-nkt">
                                                                     <rect key="frame" x="304.33333333333331" y="0.0" width="50.666666666666686" height="45"/>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
-                                                                    <state key="normal" title="Button" image="s.circle.fill" catalog="system">
+                                                                    <state key="normal" title="Button">
+                                                                        <imageReference key="image" image="s.circle.fill" catalog="system" symbolScale="large"/>
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="sGE-lR-Jov"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
@@ -449,6 +475,15 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <connections>
+                                                    <outlet property="fri" destination="4ot-jC-PqW" id="cMS-SJ-YLg"/>
+                                                    <outlet property="mon" destination="FxS-KS-13z" id="hQd-5W-aPU"/>
+                                                    <outlet property="sat" destination="YFu-yx-nkt" id="B10-5q-Uzn"/>
+                                                    <outlet property="sun" destination="Tkc-E1-33k" id="fB6-gt-I0J"/>
+                                                    <outlet property="thur" destination="3cc-px-Jqf" id="fpi-Cc-p5w"/>
+                                                    <outlet property="tue" destination="8Vy-cD-6Zq" id="XNn-Wd-bra"/>
+                                                    <outlet property="wed" destination="6Qi-M4-59P" id="bYY-uv-k7S"/>
+                                                </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimeCell" rowHeight="150" id="OHR-Ld-HBE" customClass="TimeCell" customModule="NotiScheduler" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="149.33333396911621" width="375" height="150"/>
@@ -463,6 +498,9 @@
                                                                 <constraint firstAttribute="width" constant="150" id="UUw-LY-5eW"/>
                                                                 <constraint firstAttribute="height" constant="80" id="fzk-Tb-u2l"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <action selector="startTime:" destination="OHR-Ld-HBE" eventType="valueChanged" id="rOJ-dV-zs9"/>
+                                                            </connections>
                                                         </datePicker>
                                                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="10" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="z9g-pP-VBb">
                                                             <rect key="frame" x="199" y="35" width="150" height="80"/>
@@ -470,6 +508,9 @@
                                                                 <constraint firstAttribute="width" constant="150" id="1cm-aX-pKI"/>
                                                                 <constraint firstAttribute="height" constant="80" id="bWT-U7-bGf"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <action selector="endTime:" destination="OHR-Ld-HBE" eventType="valueChanged" id="vAH-dc-HIu"/>
+                                                            </connections>
                                                         </datePicker>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="~" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMl-0N-bwz">
                                                             <rect key="frame" x="182.66666666666666" y="70" width="10" height="10"/>
@@ -516,6 +557,10 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <connections>
+                                                    <outlet property="endTimePicker" destination="z9g-pP-VBb" id="Kt0-hm-Osx"/>
+                                                    <outlet property="startTimePicker" destination="DmJ-XX-wdE" id="Jr4-gN-ZRi"/>
+                                                </connections>
                                             </tableViewCell>
                                             <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CancelCell" id="af0-qr-Zni">
                                                 <rect key="frame" x="0.0" y="299.33333396911621" width="375" height="43.666667938232422"/>
@@ -567,6 +612,9 @@
                     <navigationItem key="navigationItem" title="스케줄 추가" id="2AY-9q-leD">
                         <barButtonItem key="rightBarButtonItem" title="저장" id="d1M-Nl-Dz1">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="saveScheduleButton:" destination="mQO-un-SWO" id="eBd-Qx-bL4"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
