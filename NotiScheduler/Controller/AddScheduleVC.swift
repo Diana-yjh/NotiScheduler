@@ -13,21 +13,22 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     @IBOutlet weak var addScheduleTable: UITableView!
     
     public var count: Int = 0
+    public var returnText: String = "스케줄 이름"
     
-    func showAlert(scheduleName: String) {
-        print("3")
+    func showAlert() {
+        
         let alert = UIAlertController(title: "스케줄 이름 변경", message: "변경할 이름을 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
         
         alert.addTextField {(myTextField) in
-            myTextField.placeholder = scheduleName
+            myTextField.placeholder = self.returnText
         }
         alert.addAction(UIAlertAction(title: "취소", style: .cancel))
         alert.addAction(UIAlertAction(title: "확인", style: .default) {(action) -> Void in
-            print("4")
             if let text = alert.textFields?[0].text {
+                self.returnText = text
+                let indexPath = [IndexPath(row: 0, section: 0)]
+                self.addScheduleTable.reloadRows(at: indexPath, with: .automatic)
                 print("text = \(text)")
-                let cell = self.addScheduleTable.dequeueReusableCell(withIdentifier: "OnOffCell2") as! OnOffCell2
-                cell.scheduleName.setTitle(text, for: .normal)
             }
         })
         present(alert, animated: true, completion: nil)
@@ -55,6 +56,7 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         return 1
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -68,8 +70,8 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         let row = indexPath.row
         
         if row == 0 {
-            print("1")
             let cell = tableView.dequeueReusableCell(withIdentifier: "OnOffCell2") as! OnOffCell2
+            cell.scheduleName.setTitle(returnText, for: .normal)
             cell.delegate = self
             return cell
         } else if row == 1 {
