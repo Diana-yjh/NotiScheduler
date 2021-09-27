@@ -12,19 +12,29 @@ protocol OnOffCell2Delegate {
     func showAlert()
 }
 
+protocol ScheduleOnOffDelegate {
+    func disableCell(status: Bool)
+}
+
 class OnOffCell2: UITableViewCell {
     
     @IBOutlet weak var scheduleName: UIButton!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var scheduleOnOff: UISwitch!
     
-    var delegate: OnOffCell2Delegate?
+    var onOffCell2Delegate: OnOffCell2Delegate?
+    var scheduleOnOffDelegate: ScheduleOnOffDelegate?
     
     override func layoutSubviews(){
         super.layoutSubviews()
     }
     
     @IBAction func editScheduleNameButton(_ sender: Any) {
-        self.delegate?.showAlert()
+        self.onOffCell2Delegate?.showAlert()
+    }
+    
+    @IBAction func scheduleOnOffButton(_ sender: Any) {
+        self.scheduleOnOffDelegate?.disableCell(status: scheduleOnOff.isOn)
     }
 }
 

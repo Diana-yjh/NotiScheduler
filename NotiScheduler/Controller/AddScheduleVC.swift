@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegate, OnOffCell2Delegate {
+class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegate, OnOffCell2Delegate, ScheduleOnOffDelegate {
     
     @IBOutlet weak var addScheduleTable: UITableView!
     
@@ -16,12 +16,13 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     public var scheduleName: String = "스케줄 이름"
     
     func showAlert() {
-        
-        let alert = UIAlertController(title: "스케줄 이름 변경", message: "변경할 이름을 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "스케줄 이름 변경", message: "8글자 내로 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
         
         alert.addTextField {(myTextField) in
             myTextField.placeholder = self.scheduleName
+//            self.checkMaxLength(textField: myTextField, maxLength: 8)
         }
+        
         alert.addAction(UIAlertAction(title: "취소", style: .cancel))
         alert.addAction(UIAlertAction(title: "확인", style: .default) {(action) -> Void in
             if let text = alert.textFields?[0].text {
@@ -30,7 +31,24 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
                 self.addScheduleTable.reloadRows(at: indexPath, with: .none)
             }
         })
+        
         present(alert, animated: true, completion: nil)
+    }
+    
+//    func checkMaxLength(textField: UITextField!, maxLength: Int) {
+//        if(textField.text!.count > maxLength) {
+//            textField.deleteBackward()
+//        }
+//    }
+    
+    func disableCell(status: Bool) {
+        if status == false {
+            
+        }
+    }
+    
+    @IBAction func saveScheduleButton(_ sender: Any) {
+        
     }
     
     override func viewDidLoad() {
@@ -50,6 +68,7 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         viewController.count = self.count
         self.dismiss(animated: true, completion: nil)
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -69,7 +88,7 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         if row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OnOffCell2") as! OnOffCell2
             cell.scheduleName.setTitle(scheduleName, for: .normal)
-            cell.delegate = self
+            cell.onOffCell2Delegate = self
             return cell
         } else if row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DayOnOffCell")

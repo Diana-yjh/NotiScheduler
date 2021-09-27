@@ -323,6 +323,9 @@
                                                         <switch opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AtE-kf-V6H">
                                                             <rect key="frame" x="311" y="24.666666666666671" width="51" height="31"/>
                                                             <color key="onTintColor" red="0.54117647059999996" green="0.73056573579999995" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <connections>
+                                                                <action selector="scheduleOnOffButton:" destination="HwQ-gv-eh8" eventType="valueChanged" id="fPp-xY-zgH"/>
+                                                            </connections>
                                                         </switch>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mlz-wL-KT6">
                                                             <rect key="frame" x="15" y="0.0" width="120" height="60"/>
@@ -365,6 +368,7 @@
                                                 <connections>
                                                     <outlet property="editButton" destination="44Z-LA-Q4S" id="oDX-C6-MrE"/>
                                                     <outlet property="scheduleName" destination="Mlz-wL-KT6" id="d5o-1f-Z34"/>
+                                                    <outlet property="scheduleOnOff" destination="AtE-kf-V6H" id="Zkr-9c-KTS"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DayOnOffCell" rowHeight="45" id="zwT-00-mCG" customClass="DayOnOffCell" customModule="NotiScheduler" customModuleProvider="target">
@@ -613,7 +617,7 @@
                         <barButtonItem key="rightBarButtonItem" title="저장" id="d1M-Nl-Dz1">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="saveScheduleButton:" destination="mQO-un-SWO" id="eBd-Qx-bL4"/>
+                                <action selector="saveScheduleButton:" destination="mQO-un-SWO" id="Cpt-8t-8XL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
