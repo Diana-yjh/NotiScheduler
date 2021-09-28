@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     public var onOffButtonStatus: Bool = true
     public var scheduleStatus: Bool = true
-    public var count: Int = 2
+    public var count: Int = 0
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +22,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         scheduleTableView.dataSource = self
     }
 
+    //navigation bar 이전 화면으로 돌아왔을 때 title 삭제되는 것을 방지하기 위함
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "스케줄"
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -70,6 +76,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    //cell 눌럿을 때 회색박스 안생기게
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let section = indexPath.section
         let row = indexPath.row
@@ -93,7 +104,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
         let section = indexPath.section
-        
         if section == 1 {
             let DeleteAction = UIContextualAction(style: .destructive, title:  "삭제", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
                 self.count -= 1
@@ -112,6 +122,5 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         } else {
             return nil
         }
-        
     }
 }

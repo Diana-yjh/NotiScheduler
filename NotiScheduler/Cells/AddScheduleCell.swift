@@ -10,10 +10,19 @@ import UIKit
 
 protocol OnOffCell2Delegate {
     func showAlert()
+    func disableCell(status: Bool)
 }
 
-protocol ScheduleOnOffDelegate {
-    func disableCell(status: Bool)
+protocol DayOnOffCellDelegate {
+    func selectedDay(dayArray: [String])
+}
+
+protocol TimeCellDelegate {
+    func startTime(time: String)
+    func endTime(time: String)
+}
+protocol CancellCellDelegate {
+    func dismissController()
 }
 
 class OnOffCell2: UITableViewCell {
@@ -23,7 +32,6 @@ class OnOffCell2: UITableViewCell {
     @IBOutlet weak var scheduleOnOff: UISwitch!
     
     var onOffCell2Delegate: OnOffCell2Delegate?
-    var scheduleOnOffDelegate: ScheduleOnOffDelegate?
     
     override func layoutSubviews(){
         super.layoutSubviews()
@@ -34,7 +42,8 @@ class OnOffCell2: UITableViewCell {
     }
     
     @IBAction func scheduleOnOffButton(_ sender: Any) {
-        self.scheduleOnOffDelegate?.disableCell(status: scheduleOnOff.isOn)
+        self.onOffCell2Delegate?.disableCell(status: scheduleOnOff.isOn)
+        print("status = \(scheduleOnOff.isOn)")
     }
 }
 
@@ -55,6 +64,9 @@ class DayOnOffCell: UITableViewCell {
     var thurOnOff: Bool = false
     var friOnOff: Bool = false
     var satOnOff: Bool = false
+    var dayArray: [String] = []
+    
+    var dayOnOffCellDelegate: DayOnOffCellDelegate?
     
     override func layoutSubviews(){
         super.layoutSubviews()
@@ -70,49 +82,53 @@ class DayOnOffCell: UITableViewCell {
         case 0:
             dayState = sunOnOff
             day = sun
-            text = "s"
+            text = "sun"
             sunOnOff = buttonOnOff(dayState, day, text)
         case 1:
             dayState = monOnOff
             day = mon
-            text = "m"
+            text = "mon"
             monOnOff = buttonOnOff(dayState, day, text)
         case 2:
             dayState = tueOnOff
             day = tue
-            text = "t"
+            text = "tue"
             tueOnOff = buttonOnOff(dayState, day, text)
         case 3:
             dayState = wedOnOff
             day = wed
-            text = "w"
+            text = "wed"
             wedOnOff = buttonOnOff(dayState, day, text)
         case 4:
             dayState = thurOnOff
             day = thur
-            text = "t"
+            text = "thur"
             thurOnOff = buttonOnOff(dayState, day, text)
         case 5:
             dayState = friOnOff
             day = fri
-            text = "f"
+            text = "fri"
             friOnOff = buttonOnOff(dayState, day, text)
         case 6:
             dayState = satOnOff
             day = sat
-            text = "s"
+            text = "sat"
             satOnOff = buttonOnOff(dayState, day, text)
         default:
             return
         }
+        self.dayOnOffCellDelegate?.selectedDay(dayArray: dayArray)
     }
     
     func buttonOnOff(_ dayState: Bool, _ day: UIButton, _ text: String) -> Bool {
+        let word = text.map{String($0)}[0]
         if dayState == false {
-            day.setImage(UIImage(systemName: "\(text).circle.fill")?.withTintColor(UIColor(red: 138/225.0, green: 186/225.0, blue: 81/225.0, alpha: 1.0), renderingMode: .alwaysOriginal), for: .normal)
+            day.setImage(UIImage(systemName: "\(word).circle.fill")?.withTintColor(UIColor(red: 138/225.0, green: 186/225.0, blue: 81/225.0, alpha: 1.0), renderingMode: .alwaysOriginal), for: .normal)
+            dayArray.append(text)
             return true
         } else {
-            day.setImage(UIImage(systemName: "\(text).circle.fill")?.withTintColor(UIColor(red: 137/225.0, green: 137/225.0, blue: 137/225.0, alpha: 1.0), renderingMode: .alwaysOriginal), for: .normal)
+            day.setImage(UIImage(systemName: "\(word).circle.fill")?.withTintColor(UIColor(red: 137/225.0, green: 137/225.0, blue: 137/225.0, alpha: 1.0), renderingMode: .alwaysOriginal), for: .normal)
+            dayArray.remove(at: dayArray.firstIndex(of: text)!)
             return false
         }
     }
@@ -122,6 +138,11 @@ class TimeCell: UITableViewCell {
     
     @IBOutlet weak var startTimePicker: UIDatePicker!
     @IBOutlet weak var endTimePicker: UIDatePicker!
+    @IBOutlet weak var tilde: UILabel!
+    @IBOutlet weak var startTimeLabel: UILabel!
+    @IBOutlet weak var endTimeLabel: UILabel!
+    
+    var timeCellDelegate: TimeCellDelegate?
     
     override func layoutSubviews(){
         super.layoutSubviews()
@@ -133,7 +154,8 @@ class TimeCell: UITableViewCell {
         let components = Calendar.current.dateComponents([.hour, .minute], from: date)
         let hour = components.hour!
         let minute = components.minute!
-        print("startHour = \(hour), startMinutes = \(minute)")
+        let time = "\(hour):\(minute)"
+        self.timeCellDelegate?.startTime(time: time)
     }
     
     @IBAction func endTime(_ sender: UIButton) {
@@ -142,13 +164,23 @@ class TimeCell: UITableViewCell {
         let components = Calendar.current.dateComponents([.hour, .minute], from: date)
         let hour = components.hour!
         let minute = components.minute!
-        print("endHour = \(hour), endMinutes = \(minute)")
+        let time = "\(hour):\(minute)"
+        self.timeCellDelegate?.endTime(time: time)
     }
 }
 
 class CancelCell: UITableViewCell {
     
+    var cancelCellDelegate: CancellCellDelegate?
+    
+    @IBOutlet weak var cancelButton: UIButton!
+    
     override func layoutSubviews(){
         super.layoutSubviews()
     }
+    
+    @IBAction func cancelButton(_ sender: Any) {
+        self.cancelCellDelegate?.dismissController()
+    }
+    
 }

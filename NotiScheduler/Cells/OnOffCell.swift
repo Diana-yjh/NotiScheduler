@@ -36,7 +36,8 @@ class SchedulebarCell: UITableViewCell {
 class ScheduleCell: UITableViewCell {
     
     @IBOutlet weak var scheduleNumber: UILabel!
-    @IBOutlet weak var dateAndTime: UILabel!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var day: UILabel!
     @IBOutlet weak var scheduleIcon: UIButton!
     
     var onOffStatus: Bool  = true
