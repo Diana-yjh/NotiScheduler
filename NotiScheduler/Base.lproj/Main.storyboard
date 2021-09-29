@@ -513,22 +513,28 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <datePicker opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="10" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="DmJ-XX-wdE">
+                                                        <datePicker opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="10" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmJ-XX-wdE">
                                                             <rect key="frame" x="26" y="35" width="150" height="80"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="150" id="UUw-LY-5eW"/>
                                                                 <constraint firstAttribute="height" constant="80" id="fzk-Tb-u2l"/>
                                                             </constraints>
+                                                            <date key="date" timeIntervalSinceReferenceDate="654577200.93593895">
+                                                                <!--2021-09-29 03:00:00 +0000-->
+                                                            </date>
                                                             <connections>
                                                                 <action selector="startTime:" destination="OHR-Ld-HBE" eventType="valueChanged" id="rOJ-dV-zs9"/>
                                                             </connections>
                                                         </datePicker>
-                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="10" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="z9g-pP-VBb">
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="10" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9g-pP-VBb">
                                                             <rect key="frame" x="199" y="35" width="150" height="80"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="150" id="1cm-aX-pKI"/>
                                                                 <constraint firstAttribute="height" constant="80" id="bWT-U7-bGf"/>
                                                             </constraints>
+                                                            <date key="date" timeIntervalSinceReferenceDate="654577200.88278604">
+                                                                <!--2021-09-29 03:00:00 +0000-->
+                                                            </date>
                                                             <connections>
                                                                 <action selector="endTime:" destination="OHR-Ld-HBE" eventType="valueChanged" id="vAH-dc-HIu"/>
                                                             </connections>

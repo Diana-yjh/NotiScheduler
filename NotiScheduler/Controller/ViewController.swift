@@ -123,6 +123,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if section == 1 {
             let DeleteAction = UIContextualAction(style: .destructive, title:  "삭제", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
                 self.count -= 1
+                self.receiveData.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 print("Delete")
                 success(true)

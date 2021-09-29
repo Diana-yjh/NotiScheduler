@@ -19,8 +19,8 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     public var scheduleName: String = "스케줄 이름"
     public var editScheduleOnOff: Bool = true
     public var dayArray: [String] = []
-    public var startTime: String = ""
-    public var endTime: String = ""
+    public var startTime: String = "12:00"
+    public var endTime: String = "12:00"
     
     var addScheduleVCDelegate: AddScheduleVCDelegate?
     
@@ -64,6 +64,15 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         alert.addAction(UIAlertAction(title: "확인", style: .default){(action) -> Void in
             
             let vc = self.storyboard!.instantiateViewController(identifier: "ViewController") as! ViewController
+            
+            if self.dayArray.count == 0 {
+                let alert = UIAlertController(title: "저장 실패", message: "요일을 선택해주세요", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default))
+                
+                self.present(alert, animated:  true, completion: nil)
+                return
+            }
+            
             let data = ScheduleData(name: self.scheduleName, onOff: self.editScheduleOnOff, day: self.dayArray, startTime: self.startTime, endTime: self.endTime)
             print(vc.count)
             self.navigationController?.popViewController(animated: true)
