@@ -21,7 +21,7 @@ protocol TimeCellDelegate {
     func startTime(time: String)
     func endTime(time: String)
 }
-protocol CancellCellDelegate {
+protocol CancelCellDelegate {
     func dismissController()
 }
 
@@ -73,7 +73,6 @@ class DayOnOffCell: UITableViewCell {
     }
     
     @IBAction func dayOnOff(_ sender: UIButton) {
-        print("sender.tag = \(sender.tag)")
         var dayState: Bool = false
         var day: UIButton = UIButton()
         var text: String = ""
@@ -171,7 +170,7 @@ class TimeCell: UITableViewCell {
 
 class CancelCell: UITableViewCell {
     
-    var cancelCellDelegate: CancellCellDelegate?
+    var cancelCellDelegate: CancelCellDelegate?
     
     @IBOutlet weak var cancelButton: UIButton!
     

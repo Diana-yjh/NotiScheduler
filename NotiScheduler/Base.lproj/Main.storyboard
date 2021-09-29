@@ -12,7 +12,7 @@
         <!--스케줄-->
         <scene sceneID="ap4-Bf-1uc">
             <objects>
-                <viewController id="yYq-Ky-mZt" customClass="ViewController" customModule="NotiScheduler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yYq-Ky-mZt" customClass="ViewController" customModule="NotiScheduler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="80R-08-LqR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -278,7 +278,7 @@
                                         <connections>
                                             <outlet property="day" destination="1c5-hz-L3t" id="Rke-02-7u8"/>
                                             <outlet property="scheduleIcon" destination="RJV-BT-4y3" id="Voz-iN-qcs"/>
-                                            <outlet property="scheduleNumber" destination="EdI-pB-0yZ" id="s8M-Eb-H6W"/>
+                                            <outlet property="scheduleName" destination="EdI-pB-0yZ" id="gvn-Id-ywH"/>
                                             <outlet property="time" destination="ubH-qr-erb" id="fDy-0W-GFW"/>
                                             <segue destination="2bf-y9-OTx" kind="show" id="7sH-9m-BFp"/>
                                         </connections>
@@ -315,7 +315,7 @@
         <!--스케줄 추가-->
         <scene sceneID="fCK-SB-BQg">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="mQO-un-SWO" customClass="AddScheduleVC" customModule="NotiScheduler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddScheduleVC" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mQO-un-SWO" customClass="AddScheduleVC" customModule="NotiScheduler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rIw-hD-tsO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -683,7 +683,7 @@
         <!--스케줄 변경-->
         <scene sceneID="iea-kB-6Nz">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="2bf-y9-OTx" customClass="EditScheduleVC" customModule="NotiScheduler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditScheduleVC" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2bf-y9-OTx" customClass="EditScheduleVC" customModule="NotiScheduler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="83g-TV-Eg4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

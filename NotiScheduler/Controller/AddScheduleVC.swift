@@ -8,16 +8,21 @@
 import Foundation
 import UIKit
 
-class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegate, OnOffCell2Delegate, DayOnOffCellDelegate, TimeCellDelegate, CancellCellDelegate {
+protocol AddScheduleVCDelegate {
+    func sendDataToViewController(data: ScheduleData)
+}
+
+class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegate, OnOffCell2Delegate, DayOnOffCellDelegate, TimeCellDelegate, CancelCellDelegate {
     
     @IBOutlet weak var addScheduleTable: UITableView!
     
-    public var count: Int = 0
     public var scheduleName: String = "스케줄 이름"
     public var editScheduleOnOff: Bool = true
     public var dayArray: [String] = []
     public var startTime: String = ""
     public var endTime: String = ""
+    
+    var addScheduleVCDelegate: AddScheduleVCDelegate?
     
     func showAlert() {
         let alert = UIAlertController(title: "스케줄 이름 변경", message: "8글자 내로 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
@@ -54,15 +59,15 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     @IBAction func saveScheduleButton(_ sender: Any) {
-        ScheduleData(name: scheduleName, onOff: editScheduleOnOff, day: dayArray, startTime: startTime, endTime: endTime)
-        
         let alert = UIAlertController(title: "스케줄 저장", message: "저장하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "취소", style: .cancel))
         alert.addAction(UIAlertAction(title: "확인", style: .default){(action) -> Void in
+            
             let vc = self.storyboard!.instantiateViewController(identifier: "ViewController") as! ViewController
-            vc.count += 1
-            self.navigationController?.pushViewController(vc, animated: true)
-//            self.navigationController?.popViewController(animated: true)
+            let data = ScheduleData(name: self.scheduleName, onOff: self.editScheduleOnOff, day: self.dayArray, startTime: self.startTime, endTime: self.endTime)
+            print(vc.count)
+            self.navigationController?.popViewController(animated: true)
+            self.addScheduleVCDelegate?.sendDataToViewController(data: data)
         })
         present(alert, animated: true, completion: nil)
     }
@@ -108,9 +113,6 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     @IBAction func cancelScheduleButton(_ sender: Any) {
-        count -= 1
-        let viewController = ViewController()
-        viewController.count = self.count
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -134,6 +136,7 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
             let cell = tableView.dequeueReusableCell(withIdentifier: "OnOffCell2") as! OnOffCell2
             cell.scheduleName.setTitle(scheduleName, for: .normal)
             cell.onOffCell2Delegate = self
+            print("self = \(self)")
             return cell
         } else if row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DayOnOffCell") as! DayOnOffCell
@@ -143,6 +146,7 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
             } else {
                 dayOnOffCellUserInteraction(cell: cell, alpha: 1)
             }
+            cell.dayOnOffCellDelegate = self
             return cell
         } else if row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TimeCell") as! TimeCell
@@ -152,6 +156,7 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
             } else {
                 timeCellUserInteraction(cell: cell, alpha: 1)
             }
+            cell.timeCellDelegate = self
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CancelCell") as! CancelCell

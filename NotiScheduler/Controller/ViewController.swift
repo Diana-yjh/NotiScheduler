@@ -7,13 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddScheduleVCDelegate {
     @IBOutlet weak var scheduleTableView: UITableView!
     
     public var onOffButtonStatus: Bool = true
     public var scheduleStatus: Bool = true
     public var count: Int = 0
-        
+    public var receiveData: [ScheduleData] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         scheduleTableView.tableFooterView = UIView()
@@ -21,11 +22,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         scheduleTableView.delegate = self
         scheduleTableView.dataSource = self
     }
-
+    
     //navigation bar 이전 화면으로 돌아왔을 때 title 삭제되는 것을 방지하기 위함
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = "스케줄"
+        scheduleTableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let addScheduleVC: AddScheduleVC = segue.destination as! AddScheduleVC
+        addScheduleVC.addScheduleVCDelegate = self
+    }
+    
+    func sendDataToViewController(data: ScheduleData) {
+        self.receiveData.append(data)
+        count += 1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -57,8 +69,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 return cell!
             }
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell")
-            return cell!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell", for: indexPath) as! ScheduleCell
+            print(indexPath)
+            cell.scheduleName.text = receiveData[indexPath.row].name
+            cell.time.text = "\(receiveData[indexPath.row].startTime) ~ \(receiveData[indexPath.row].endTime)"
+            cell.day.text = receiveData[indexPath.row].day.reduce(""){ return $0 + " " + $1 }
+            return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell")
             return cell!

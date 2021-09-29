@@ -35,7 +35,7 @@ class SchedulebarCell: UITableViewCell {
 
 class ScheduleCell: UITableViewCell {
     
-    @IBOutlet weak var scheduleNumber: UILabel!
+    @IBOutlet weak var scheduleName: UILabel!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var day: UILabel!
     @IBOutlet weak var scheduleIcon: UIButton!
@@ -44,15 +44,6 @@ class ScheduleCell: UITableViewCell {
     
     override func layoutSubviews(){
         super.layoutSubviews()
+        self.day.numberOfLines = 0
     }
-    
-//    func onOffButtonStatus() {
-//        if onOffStatus == true {
-//            let offImage = UIImage(systemName: "calendar")?.withTintColor(.gray)
-//            scheduleIcon.setImage(offImage, for: .normal)
-//        } else {
-//            let onImage = UIImage(systemName: "calendar")?.withTintColor(UIColor(red: 147, green: 183, blue: 81, alpha: 1))
-//            scheduleIcon.setImage(onImage, for: .normal)
-//        }
-//    }
 }
