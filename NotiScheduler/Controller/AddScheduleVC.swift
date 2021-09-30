@@ -12,18 +12,30 @@ protocol AddScheduleVCDelegate {
     func sendDataToViewController(data: ScheduleData)
 }
 
-class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegate, OnOffCell2Delegate, DayOnOffCellDelegate, TimeCellDelegate, CancelCellDelegate {
+class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegate, OnOffCell2Delegate, DayOnOffCellDelegate, TimeCellDelegate, CancelCellDelegate, DeleteCellDelegate {
     
     @IBOutlet weak var addScheduleTable: UITableView!
+    
+    var addScheduleVCDelegate: AddScheduleVCDelegate?
     
     public var scheduleName: String = "스케줄 이름"
     public var editScheduleOnOff: Bool = true
     public var dayArray: [String] = []
     public var startTime: String = "12:00"
     public var endTime: String = "12:00"
+    public var buttonForShowingAddView: Int = 0
     
-    var addScheduleVCDelegate: AddScheduleVCDelegate?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addScheduleTable.tableFooterView = UIView()
+        addScheduleTable.rowHeight = UITableView.automaticDimension
+        addScheduleTable.delegate = self
+        addScheduleTable.dataSource = self
+        
+        self.navigationController?.isNavigationBarHidden = true
+    }
     
+    //MARK: - Delegate functions
     func showAlert() {
         let alert = UIAlertController(title: "스케줄 이름 변경", message: "8글자 내로 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
         
@@ -41,40 +53,34 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         })
         present(alert, animated: true, completion: nil)
     }
-    
     func selectedDay(dayArray: [String]) {
         self.dayArray = dayArray
     }
-    
     func startTime(time: String) {
         self.startTime = time
     }
-    
     func endTime(time: String) {
         self.endTime = time
     }
-    //스케줄 추가 화면의 취소버튼
     func dismissController() {
         navigationController?.popViewController(animated: true)
+    }
+    func deleteCell() {
+        
     }
     
     @IBAction func saveScheduleButton(_ sender: Any) {
         let alert = UIAlertController(title: "스케줄 저장", message: "저장하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "취소", style: .cancel))
         alert.addAction(UIAlertAction(title: "확인", style: .default){(action) -> Void in
-            
-            let vc = self.storyboard!.instantiateViewController(identifier: "ViewController") as! ViewController
-            
             if self.dayArray.count == 0 {
                 let alert = UIAlertController(title: "저장 실패", message: "요일을 선택해주세요", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "확인", style: .default))
-                
                 self.present(alert, animated:  true, completion: nil)
                 return
             }
             
             let data = ScheduleData(name: self.scheduleName, onOff: self.editScheduleOnOff, day: self.dayArray, startTime: self.startTime, endTime: self.endTime)
-            print(vc.count)
             self.navigationController?.popViewController(animated: true)
             self.addScheduleVCDelegate?.sendDataToViewController(data: data)
         })
@@ -83,11 +89,7 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     func disableCell(status: Bool) {
         editScheduleOnOff = status
-        if editScheduleOnOff == false {
-            self.addScheduleTable.reloadData()
-        } else {
-            self.addScheduleTable.reloadData()
-        }
+        self.addScheduleTable.reloadData()
     }
     
     func dayOnOffCellUserInteraction(cell: DayOnOffCell, alpha: CGFloat){
@@ -110,17 +112,6 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         cell.isUserInteractionEnabled = editScheduleOnOff
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        addScheduleTable.tableFooterView = UIView()
-        addScheduleTable.rowHeight = UITableView.automaticDimension
-        addScheduleTable.delegate = self
-        addScheduleTable.dataSource = self
-        
-        self.navigationController?.navigationBar.topItem?.title = ""
-        self.navigationController?.navigationBar.tintColor = .white
-    }
-    
     @IBAction func cancelScheduleButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -140,12 +131,10 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
-        
         if row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OnOffCell2") as! OnOffCell2
             cell.scheduleName.setTitle(scheduleName, for: .normal)
             cell.onOffCell2Delegate = self
-            print("self = \(self)")
             return cell
         } else if row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DayOnOffCell") as! DayOnOffCell
@@ -168,11 +157,17 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
             cell.timeCellDelegate = self
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CancelCell") as! CancelCell
-            cell.cancelCellDelegate = self
-            return cell
+            if buttonForShowingAddView == 1 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "CancelCell") as! CancelCell
+                cell.cancelCellDelegate = self
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DeleteCell") as! DeleteCell
+                return cell
+            }
         }
     }
+    
     
     //cell 눌렀을 때 회색박스 안생기게
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -181,7 +176,6 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let row = indexPath.row
-        
         if row == 1 || row == 3 {
             return 40
         } else if row == 2 {

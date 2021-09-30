@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+//MARK: - Delegates
 protocol OnOffCell2Delegate {
     func showAlert()
     func disableCell(status: Bool)
@@ -25,6 +26,11 @@ protocol CancelCellDelegate {
     func dismissController()
 }
 
+protocol DeleteCellDelegate {
+    func deleteCell()
+}
+
+//MARK: - OnOffCell2
 class OnOffCell2: UITableViewCell {
     
     @IBOutlet weak var scheduleName: UIButton!
@@ -47,6 +53,7 @@ class OnOffCell2: UITableViewCell {
     }
 }
 
+//MARK: - DayOnOffCell
 class DayOnOffCell: UITableViewCell {
     
     @IBOutlet weak var sun: UIButton!
@@ -133,13 +140,14 @@ class DayOnOffCell: UITableViewCell {
     }
 }
 
+//MARK: - TimeCell
 class TimeCell: UITableViewCell {
     
     @IBOutlet weak var startTimePicker: UIDatePicker!
     @IBOutlet weak var endTimePicker: UIDatePicker!
-    @IBOutlet weak var tilde: UILabel!
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var endTimeLabel: UILabel!
+    @IBOutlet weak var tilde: UILabel!
     
     var timeCellDelegate: TimeCellDelegate?
     
@@ -168,11 +176,12 @@ class TimeCell: UITableViewCell {
     }
 }
 
+//MARK: - CancelCell
 class CancelCell: UITableViewCell {
     
-    var cancelCellDelegate: CancelCellDelegate?
-    
     @IBOutlet weak var cancelButton: UIButton!
+    
+    var cancelCellDelegate: CancelCellDelegate?
     
     override func layoutSubviews(){
         super.layoutSubviews()
@@ -181,5 +190,20 @@ class CancelCell: UITableViewCell {
     @IBAction func cancelButton(_ sender: Any) {
         self.cancelCellDelegate?.dismissController()
     }
+}
+
+//MARK: - DeleteCell
+class DeleteCell: UITableViewCell {
     
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    var deleteCellDelegate: DeleteCellDelegate?
+    
+    override func layoutSubviews(){
+        super.layoutSubviews()
+    }
+    
+    @IBAction func deleteButton(_ sender: Any) {
+        self.deleteCellDelegate?.deleteCell()
+    }
 }
