@@ -74,8 +74,12 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         navigationController?.popViewController(animated: true)
     }
     func deleteCell(){
-        let alert = UIAlertController()
-        navigationController?.popViewController(animated: true)
+        let alert = UIAlertController(title: "Delete Schedule", message: "Do you want to delete the schedule?", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default))
+        alert.addAction(UIAlertAction(title: "Ok", style: .default){(action) -> Void in
+            
+        })
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func backToSchedule(_ sender: Any) {
