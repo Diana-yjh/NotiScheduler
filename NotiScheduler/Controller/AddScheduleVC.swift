@@ -15,15 +15,17 @@ protocol AddScheduleVCDelegate {
 class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegate, OnOffCell2Delegate, DayOnOffCellDelegate, TimeCellDelegate, CancelCellDelegate, DeleteCellDelegate {
     
     @IBOutlet weak var addScheduleTable: UITableView!
+    @IBOutlet weak var viewTitle: UILabel!
     
     var addScheduleVCDelegate: AddScheduleVCDelegate?
     
-    public var scheduleName: String = "스케줄 이름"
-    public var editScheduleOnOff: Bool = true
+    public var scheduleName: String = "Schedule1"
+    public var editScheduleOnOffSwitch: Bool = true
     public var dayArray: [String] = []
     public var startTime: String = "12:00"
     public var endTime: String = "12:00"
     public var buttonForShowingAddView: Int = 0
+    public var scheduleCount: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,19 +34,25 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         addScheduleTable.delegate = self
         addScheduleTable.dataSource = self
         
+        if buttonForShowingAddView == 0 {
+            viewTitle.text = "Edit"
+        } else {
+            viewTitle.text = "Add"
+        }
+        
         self.navigationController?.isNavigationBarHidden = true
     }
     
     //MARK: - Delegate functions
     func showAlert() {
-        let alert = UIAlertController(title: "스케줄 이름 변경", message: "8글자 내로 입력해주세요.", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Edit", message: "Edit schedule name.", preferredStyle: UIAlertController.Style.alert)
         
         alert.addTextField {(myTextField) in
             myTextField.placeholder = self.scheduleName
         }
         
-        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
-        alert.addAction(UIAlertAction(title: "확인", style: .default) {(action) -> Void in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default))
+        alert.addAction(UIAlertAction(title: "OK", style: .default) {(action) -> Void in
             if let text = alert.textFields?[0].text {
                 self.scheduleName = text
                 let indexPath = [IndexPath(row: 0, section: 0)]
@@ -65,22 +73,26 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     func dismissController() {
         navigationController?.popViewController(animated: true)
     }
-    func deleteCell() {
-        
+    func deleteCell(){
+        let alert = UIAlertController()
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func backToSchedule(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func saveScheduleButton(_ sender: Any) {
-        let alert = UIAlertController(title: "스케줄 저장", message: "저장하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
-        alert.addAction(UIAlertAction(title: "확인", style: .default){(action) -> Void in
+        let alert = UIAlertController(title: "Save Schedule", message: "Do you want to save the schedule?", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default))
+        alert.addAction(UIAlertAction(title: "Ok", style: .default){(action) -> Void in
             if self.dayArray.count == 0 {
-                let alert = UIAlertController(title: "저장 실패", message: "요일을 선택해주세요", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "확인", style: .default))
+                let alert = UIAlertController(title: "Save Error", message: "Select the schedule day", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default))
                 self.present(alert, animated:  true, completion: nil)
                 return
             }
-            
-            let data = ScheduleData(name: self.scheduleName, onOff: self.editScheduleOnOff, day: self.dayArray, startTime: self.startTime, endTime: self.endTime)
+            let data = ScheduleData(name: self.scheduleName, onOff: self.editScheduleOnOffSwitch, day: self.dayArray, startTime: self.startTime, endTime: self.endTime)
             self.navigationController?.popViewController(animated: true)
             self.addScheduleVCDelegate?.sendDataToViewController(data: data)
         })
@@ -88,7 +100,7 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
     
     func disableCell(status: Bool) {
-        editScheduleOnOff = status
+        editScheduleOnOffSwitch = status
         self.addScheduleTable.reloadData()
     }
     
@@ -100,7 +112,7 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         cell.thur.alpha = alpha
         cell.fri.alpha = alpha
         cell.sat.alpha = alpha
-        cell.isUserInteractionEnabled = editScheduleOnOff
+        cell.isUserInteractionEnabled = editScheduleOnOffSwitch
     }
     
     func timeCellUserInteraction(cell: TimeCell, alpha: CGFloat){
@@ -109,11 +121,7 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         cell.tilde.alpha = alpha
         cell.startTimeLabel.alpha = alpha
         cell.endTimeLabel.alpha = alpha
-        cell.isUserInteractionEnabled = editScheduleOnOff
-    }
-    
-    @IBAction func cancelScheduleButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        cell.isUserInteractionEnabled = editScheduleOnOffSwitch
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -123,7 +131,11 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 4
+            if buttonForShowingAddView == 1{
+                return 3
+            } else {
+                return 4
+            }
         default:
             return 0
         }
@@ -134,12 +146,19 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         if row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OnOffCell2") as! OnOffCell2
             cell.scheduleName.setTitle(scheduleName, for: .normal)
+            
+            if editScheduleOnOffSwitch == true {
+                cell.scheduleOnOff.setImage(UIImage(named: "switch_on"), for: .normal)
+            } else {
+                cell.scheduleOnOff.setImage(UIImage(named: "switch_off"), for: .normal)
+            }
+            
             cell.onOffCell2Delegate = self
             return cell
         } else if row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DayOnOffCell") as! DayOnOffCell
             
-            if editScheduleOnOff == false {
+            if editScheduleOnOffSwitch == false {
                 dayOnOffCellUserInteraction(cell: cell, alpha: 0.2)
             } else {
                 dayOnOffCellUserInteraction(cell: cell, alpha: 1)
@@ -149,7 +168,7 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         } else if row == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TimeCell") as! TimeCell
             
-            if editScheduleOnOff == false {
+            if editScheduleOnOffSwitch == false {
                 timeCellUserInteraction(cell: cell, alpha: 0.2)
             } else {
                 timeCellUserInteraction(cell: cell, alpha: 1)
@@ -157,14 +176,8 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
             cell.timeCellDelegate = self
             return cell
         } else {
-            if buttonForShowingAddView == 1 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "CancelCell") as! CancelCell
-                cell.cancelCellDelegate = self
-                return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "DeleteCell") as! DeleteCell
-                return cell
-            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DeleteCell") as! DeleteCell
+            return cell
         }
     }
     

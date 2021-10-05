@@ -8,24 +8,6 @@
 import Foundation
 import UIKit
 
-class OnOffCell: UITableViewCell {
-    @IBOutlet weak var onOffButton: UISwitch!
-    
-    public var status: Bool = true
-    
-    override func layoutSubviews(){
-        super.layoutSubviews()
-    }
-    
-    @IBAction func onOffButton(_ sender: Any) {
-        if status == true {
-            status = false
-        } else {
-            status = true
-        }
-    }
-}
-
 class SchedulebarCell: UITableViewCell {
     
     override func layoutSubviews(){
@@ -47,3 +29,27 @@ class ScheduleCell: UITableViewCell {
         self.day.numberOfLines = 0
     }
 }
+
+//class OnOffCell: UITableViewCell {
+//    @IBOutlet weak var onOffButton: UISwitch!
+//
+//    var status: Bool = true
+//    var sendOnOffButtonDelegate: SendOnOffButtonDelegate?
+//
+//    override func layoutSubviews(){
+//        super.layoutSubviews()
+//    }
+//
+//    @IBAction func onOffButton(_ sender: Any) {
+//        status = onOffButton.isOn
+//        if status == true {
+//            let sendStatus = "y"
+//            self.sendOnOffButtonDelegate?.sendOnOffButtonStatus(status: sendStatus)
+//            status = false
+//        } else {
+//            let sendStatus = "n"
+//            self.sendOnOffButtonDelegate?.sendOnOffButtonStatus(status: sendStatus)
+//            status = true
+//        }
+//    }
+//}

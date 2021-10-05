@@ -35,9 +35,10 @@ class OnOffCell2: UITableViewCell {
     
     @IBOutlet weak var scheduleName: UIButton!
     @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var scheduleOnOff: UISwitch!
+    @IBOutlet weak var scheduleOnOff: UIButton!
     
     var onOffCell2Delegate: OnOffCell2Delegate?
+    var scheduleOnOffStatus: Bool = true
     
     override func layoutSubviews(){
         super.layoutSubviews()
@@ -48,8 +49,13 @@ class OnOffCell2: UITableViewCell {
     }
     
     @IBAction func scheduleOnOffButton(_ sender: Any) {
-        self.onOffCell2Delegate?.disableCell(status: scheduleOnOff.isOn)
-        print("status = \(scheduleOnOff.isOn)")
+        if scheduleOnOffStatus == true {
+            scheduleOnOffStatus = false
+            self.onOffCell2Delegate?.disableCell(status: scheduleOnOffStatus)
+        } else {
+            scheduleOnOffStatus = true
+            self.onOffCell2Delegate?.disableCell(status: scheduleOnOffStatus)
+        }
     }
 }
 
