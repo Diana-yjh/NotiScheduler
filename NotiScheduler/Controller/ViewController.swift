@@ -7,67 +7,70 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddScheduleVCDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, EditScheduleVCDelegate {
     @IBOutlet weak var scheduleTableView: UITableView!
     @IBOutlet weak var onOffSwitch: UIButton!
     
     //    public var onOffButtonStatus: Bool = true
-    public var onOffButtonStatus: String = "y"
-    public var scheduleStatus: Bool = true
-    public var count: Int = 0
-    public var receiveData: [ScheduleData] = []
-    public var buttonForShowingAddView: Int = 0
+    public var mainOnOffStatus: String = "y"
+    public var eachScheduleOnOffStatus: Bool = true
+    public var totalScheduleCount: Int = 0
+    public var storedScheduleData: [ScheduleData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         
+        //for removing unnecessary tableview lines
         scheduleTableView.tableFooterView = UIView()
+        //to customize tableview's height
         scheduleTableView.rowHeight = UITableView.automaticDimension
         scheduleTableView.delegate = self
         scheduleTableView.dataSource = self
     }
     
-    //navigation bar 이전 화면으로 돌아왔을 때 title 삭제되는 것을 방지하기 위함
+    //to maintain the title
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = "Schedule"
         let addScheduleVC: AddScheduleVC = storyboard?.instantiateViewController(identifier: "AddScheduleVC") as! AddScheduleVC
-        addScheduleVC.addScheduleVCDelegate = self
+        addScheduleVC.editScheduleVCDelegate = self
         scheduleTableView.reloadData()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let addScheduleVC: AddScheduleVC = segue.destination as! AddScheduleVC
-        addScheduleVC.addScheduleVCDelegate = self
+    func loadUpdatedDataToViewController(data: ScheduleData) {
+        self.storedScheduleData.append(data)
+        totalScheduleCount += 1
     }
-    
-    func sendDataToViewController(data: ScheduleData) {
-        self.receiveData.append(data)
-        count += 1
+    func editDataFromViewController(indexPath: IndexPath, data: ScheduleData) {
+        self.storedScheduleData[indexPath.row] = data
+    }
+    func deleteDataFromViewController(indexPath: IndexPath) {
+        totalScheduleCount -= 1
+        self.storedScheduleData.remove(at: indexPath.row)
+        scheduleTableView.deleteRows(at: [indexPath], with: .none)
     }
     
     @IBAction func showAddSchedule(_ sender: Any) {
-        buttonForShowingAddView = 1
         if let vc = storyboard?.instantiateViewController(identifier: "AddScheduleVC") as? AddScheduleVC {
-            vc.buttonForShowingAddView = self.buttonForShowingAddView
-            vc.addScheduleVCDelegate = self
+            vc.checkIfAddOrEdit = 1
+            vc.editScheduleVCDelegate = self
             navigationController?.pushViewController(vc, animated: true)
         }
     }
     
     @IBAction func sendDataToServer(_ sender: Any) {
-        var sendJsonData = ["use_all": onOffButtonStatus, "schedules": []] as [String : Any]
+        var sendJsonData = ["use_all": mainOnOffStatus, "schedules": []] as [String : Any]
         var dataArray: [Any] = []
         
-        if count == 0 { return }
+        if totalScheduleCount == 0 { return }
         
-        for i in 0...count-1 {
-            let name = self.receiveData[i].name
-            let use = self.receiveData[i].onOff ? "y" : "n"
-            let day = self.receiveData[i].day.joined(separator: ",")
-            let start = self.receiveData[i].startTime
-            let end = self.receiveData[i].endTime
+        for i in 0...totalScheduleCount-1 {
+            let name = self.storedScheduleData[i].name
+            let use = self.storedScheduleData[i].onOff ? "y" : "n"
+            let day = self.storedScheduleData[i].day.joined(separator: ",")
+            let start = self.storedScheduleData[i].startTime
+            let end = self.storedScheduleData[i].endTime
             
             let param = ["name":name, "use": use, "day": day, "start": start, "end": end] as [String : Any]
             if let theJSONData = try? JSONSerialization.data(withJSONObject: param, options: []) {
@@ -85,14 +88,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBAction func onOffSwitch(_ sender: Any) {
-        if scheduleStatus == true {
-            self.onOffButtonStatus = "n"
+        if eachScheduleOnOffStatus == true {
+            self.mainOnOffStatus = "n"
             onOffSwitch.setImage(UIImage(named: "switch_off"), for: .normal)
-            scheduleStatus = false
+            eachScheduleOnOffStatus = false
         } else {
-            self.onOffButtonStatus = "y"
+            self.mainOnOffStatus = "y"
             onOffSwitch.setImage(UIImage(named: "switch_on"), for: .normal)
-            scheduleStatus = true
+            eachScheduleOnOffStatus = true
         }
     }
     
@@ -103,7 +106,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return count
+            return totalScheduleCount
         default:
             return 0
         }
@@ -111,14 +114,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = indexPath.section
-        
         switch section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell", for: indexPath) as! ScheduleCell
-            print(indexPath)
-            cell.scheduleName.text = receiveData[indexPath.row].name
-            cell.time.text = "\(receiveData[indexPath.row].startTime) ~ \(receiveData[indexPath.row].endTime)"
-            cell.day.text = receiveData[indexPath.row].day.joined(separator: ", ")
+            cell.scheduleName.text = storedScheduleData[indexPath.row].name
+            cell.time.text = "\(storedScheduleData[indexPath.row].startTime) ~ \(storedScheduleData[indexPath.row].endTime)"
+            cell.day.text = storedScheduleData[indexPath.row].day.joined(separator: ", ")
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell")
@@ -130,10 +131,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //cell 눌럿을 때 회색박스 안생기게
         tableView.deselectRow(at: indexPath, animated: true)
         if let addScheduleVC = storyboard?.instantiateViewController(identifier: "AddScheduleVC") as? AddScheduleVC {
-            addScheduleVC.scheduleName = receiveData[indexPath.row].name
-            addScheduleVC.editScheduleOnOffSwitch = receiveData[indexPath.row].onOff
-            addScheduleVC.startTime = receiveData[indexPath.row].startTime
-            addScheduleVC.endTime = receiveData[indexPath.row].endTime
+            addScheduleVC.checkIfAddOrEdit = 0
+            addScheduleVC.name = storedScheduleData[indexPath.row].name
+            addScheduleVC.onOffSwitch = storedScheduleData[indexPath.row].onOff
+            
+            addScheduleVC.dayArray = storedScheduleData[indexPath.row].day
+            addScheduleVC.startTime = storedScheduleData[indexPath.row].startTime
+            addScheduleVC.endTime = storedScheduleData[indexPath.row].endTime
+            addScheduleVC.indexPath = indexPath
+            addScheduleVC.editScheduleVCDelegate = self;
+
             navigationController?.pushViewController(addScheduleVC, animated: true)
         }
     }
@@ -142,17 +149,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return 80
     }
     
-    func deleteRow(){
-        
-    }
-    
 //    왼쪽으로 밀어서 행 삭제
 //    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
 //    {
 //        let DeleteAction = UIContextualAction(style: .destructive, title:  "삭제", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-//            self.count -= 1
-//            self.receiveData.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
+//            self.totalScheduleCount -= 1
+//                       self.storedScheduleData.remove(at: indexPath.row)
+//                       tableView.deleteRows(at: [indexPath], with: .fade)
 //            print("Delete")
 //            success(true)
 //        })

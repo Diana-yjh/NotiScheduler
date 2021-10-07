@@ -10,7 +10,7 @@ import UIKit
 
 //MARK: - Delegates
 protocol OnOffCell2Delegate {
-    func showAlert()
+    func editNameAlert()
     func disableCell(status: Bool)
 }
 
@@ -45,7 +45,7 @@ class OnOffCell2: UITableViewCell {
     }
     
     @IBAction func editScheduleNameButton(_ sender: Any) {
-        self.onOffCell2Delegate?.showAlert()
+        self.onOffCell2Delegate?.editNameAlert()
     }
     
     @IBAction func scheduleOnOffButton(_ sender: Any) {
@@ -80,6 +80,7 @@ class DayOnOffCell: UITableViewCell {
     var dayArray: [String] = []
     
     var dayOnOffCellDelegate: DayOnOffCellDelegate?
+    
     
     override func layoutSubviews(){
         super.layoutSubviews()
@@ -144,6 +145,41 @@ class DayOnOffCell: UITableViewCell {
             return false
         }
     }
+    
+    func editDayDefaultSetting(){
+        print("dayArray = \(dayArray)")
+        for i in 0...dayArray.count - 1 {
+            let text = dayArray[i]
+            let word = text.map{String($0)}[0]
+            switch text {
+            case "mon":
+                setDaysOn(day: mon, word: word)
+                monOnOff = true
+            case "tue":
+                setDaysOn(day: tue, word: word)
+                tueOnOff = true
+            case "wed":
+                setDaysOn(day: wed, word: word)
+                wedOnOff = true
+            case "thur":
+                setDaysOn(day: thur, word: word)
+                thurOnOff = true
+            case "fri":
+                setDaysOn(day: fri, word: word)
+                friOnOff = true
+            case "sat":
+                setDaysOn(day: sat, word: word)
+                satOnOff = true
+            default:
+                setDaysOn(day: sun, word: word)
+                sunOnOff = true
+            }
+        }
+    }
+    
+    func setDaysOn(day: UIButton, word: String){
+        day.setImage(UIImage(systemName: "\(word).circle.fill")?.withTintColor(UIColor(red: 138/225.0, green: 186/225.0, blue: 81/225.0, alpha: 1.0), renderingMode: .alwaysOriginal), for: .normal)
+    }
 }
 
 //MARK: - TimeCell
@@ -155,6 +191,9 @@ class TimeCell: UITableViewCell {
     @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var tilde: UILabel!
     
+    var defaultStartTime: String = ""
+    var defaultEndTime: String = ""
+    
     var timeCellDelegate: TimeCellDelegate?
     
     override func layoutSubviews(){
@@ -163,22 +202,18 @@ class TimeCell: UITableViewCell {
     
     @IBAction func startTime(_ sender: UIButton) {
         let picker = startTimePicker!
-        let date = picker.date
-        let components = Calendar.current.dateComponents([.hour, .minute], from: date)
-        let hour = components.hour!
-        let minute = components.minute!
-        let time = "\(hour):\(minute)"
-        self.timeCellDelegate?.startTime(time: time)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm a"
+        defaultStartTime = dateFormatter.string(from: picker.date)
+        self.timeCellDelegate?.startTime(time: defaultStartTime)
     }
     
     @IBAction func endTime(_ sender: UIButton) {
         let picker = endTimePicker!
-        let date = picker.date
-        let components = Calendar.current.dateComponents([.hour, .minute], from: date)
-        let hour = components.hour!
-        let minute = components.minute!
-        let time = "\(hour):\(minute)"
-        self.timeCellDelegate?.endTime(time: time)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm a"
+        defaultEndTime = dateFormatter.string(from: picker.date)
+        self.timeCellDelegate?.endTime(time: defaultEndTime)
     }
 }
 
