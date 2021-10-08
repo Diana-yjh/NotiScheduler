@@ -135,12 +135,15 @@ class DayOnOffCell: UITableViewCell {
     
     func buttonOnOff(_ dayState: Bool, _ day: UIButton, _ text: String) -> Bool {
         let word = text.map{String($0)}[0]
+        print("dayState = \(dayState)")
         if dayState == false {
-            day.setImage(UIImage(systemName: "\(word).circle.fill")?.withTintColor(UIColor(red: 138/225.0, green: 186/225.0, blue: 81/225.0, alpha: 1.0), renderingMode: .alwaysOriginal), for: .normal)
+            // TODO
+            day.setImage(UIImage(named: "\(word).circle.fill.green"), for: .normal)
             dayArray.append(text)
             return true
         } else {
-            day.setImage(UIImage(systemName: "\(word).circle.fill")?.withTintColor(UIColor(red: 137/225.0, green: 137/225.0, blue: 137/225.0, alpha: 1.0), renderingMode: .alwaysOriginal), for: .normal)
+            // TODO
+            day.setImage(UIImage(named: "\(word).circle.fill.gray"), for: .normal)
             dayArray.remove(at: dayArray.firstIndex(of: text)!)
             return false
         }
@@ -178,7 +181,7 @@ class DayOnOffCell: UITableViewCell {
     }
     
     func setDaysOn(day: UIButton, word: String){
-        day.setImage(UIImage(systemName: "\(word).circle.fill")?.withTintColor(UIColor(red: 138/225.0, green: 186/225.0, blue: 81/225.0, alpha: 1.0), renderingMode: .alwaysOriginal), for: .normal)
+        day.setImage(UIImage(named: "\(word).circle.fill.green"), for: .normal)
     }
 }
 
@@ -203,7 +206,7 @@ class TimeCell: UITableViewCell {
     @IBAction func startTime(_ sender: UIButton) {
         let picker = startTimePicker!
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm a"
+        dateFormatter.dateFormat = "h:mm a"
         defaultStartTime = dateFormatter.string(from: picker.date)
         self.timeCellDelegate?.startTime(time: defaultStartTime)
     }
@@ -211,7 +214,7 @@ class TimeCell: UITableViewCell {
     @IBAction func endTime(_ sender: UIButton) {
         let picker = endTimePicker!
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm a"
+        dateFormatter.dateFormat = "h:mm a"
         defaultEndTime = dateFormatter.string(from: picker.date)
         self.timeCellDelegate?.endTime(time: defaultEndTime)
     }

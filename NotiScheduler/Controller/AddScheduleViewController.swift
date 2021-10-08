@@ -14,7 +14,7 @@ protocol EditScheduleVCDelegate {
     func deleteDataFromViewController(indexPath: IndexPath)
 }
 
-class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegate, OnOffCell2Delegate, DayOnOffCellDelegate, TimeCellDelegate, CancelCellDelegate, DeleteCellDelegate {
+class AddScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, OnOffCell2Delegate, DayOnOffCellDelegate, TimeCellDelegate, CancelCellDelegate, DeleteCellDelegate {
     
     @IBOutlet weak var addScheduleTable: UITableView!
     @IBOutlet weak var viewTitle: UILabel!
@@ -37,7 +37,6 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         addScheduleTable.delegate = self
         addScheduleTable.dataSource = self
         viewTitle.text = checkIfAddOrEdit == 0 ? "Edit" : "Add"
-        
         
         self.navigationController?.isNavigationBarHidden = true
     }
@@ -150,8 +149,8 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "OnOffCell2") as! OnOffCell2
             cell.scheduleName.setTitle(name, for: .normal)
-            
-            onOffSwitch == true ? cell.scheduleOnOff.setImage(UIImage(named: "switch_on"), for: .normal) : cell.scheduleOnOff.setImage(UIImage(named: "switch_off"), for: .normal)
+            onOffSwitch == true ? cell.scheduleOnOff.setImage(UIImage(named: "Switch_on"), for: .normal) : cell.scheduleOnOff.setImage(UIImage(named: "Switch_off"), for: .normal)
+            cell.scheduleOnOffStatus = onOffSwitch
             cell.onOffCell2Delegate = self
             return cell
         case 1:
@@ -170,7 +169,7 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
                 let sTime = startTime
                 let eTime = endTime
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "HH:mm a"
+                dateFormatter.dateFormat = "h:mm a"
                 let sDate = dateFormatter.date(from: sTime)!
                 let eDate = dateFormatter.date(from: eTime)!
                 cell.startTimePicker.date = sDate
@@ -193,10 +192,14 @@ class AddScheduleVC: UIViewController, UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let row = indexPath.row
         switch row {
-        case 1, 3:
-            return 40
+        case 0:
+            return 80
+        case 1:
+            return 60
         case 2:
             return 150
+        case 3:
+            return 40
         default:
             return 80
         }

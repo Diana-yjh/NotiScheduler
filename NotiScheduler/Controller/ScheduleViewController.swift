@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, EditScheduleVCDelegate {
+class ScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, EditScheduleVCDelegate, SchedulebCellDelegate {
     @IBOutlet weak var scheduleTableView: UITableView!
     @IBOutlet weak var onOffSwitch: UIButton!
     
@@ -33,8 +33,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = "Schedule"
-        let addScheduleVC: AddScheduleVC = storyboard?.instantiateViewController(identifier: "AddScheduleVC") as! AddScheduleVC
-        addScheduleVC.editScheduleVCDelegate = self
+        //let addScheduleVC: AddScheduleViewController = storyboard?.instantiateViewController(identifier: "AddScheduleViewController") as! AddScheduleViewController
+        //addScheduleVC.editScheduleVCDelegate = self
         scheduleTableView.reloadData()
     }
     
@@ -51,8 +51,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         scheduleTableView.deleteRows(at: [indexPath], with: .none)
     }
     
+    func onOffControllInMain(onOffStatus: Bool, index: IndexPath) {
+        self.storedScheduleData[index.row].onOff = onOffStatus
+        print(self.storedScheduleData[index.row].onOff)
+        print("called")
+    }
+    
     @IBAction func showAddSchedule(_ sender: Any) {
-        if let vc = storyboard?.instantiateViewController(identifier: "AddScheduleVC") as? AddScheduleVC {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "AddScheduleViewController") as? AddScheduleViewController {
             vc.checkIfAddOrEdit = 1
             vc.editScheduleVCDelegate = self
             navigationController?.pushViewController(vc, animated: true)
@@ -90,11 +96,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func onOffSwitch(_ sender: Any) {
         if eachScheduleOnOffStatus == true {
             self.mainOnOffStatus = "n"
-            onOffSwitch.setImage(UIImage(named: "switch_off"), for: .normal)
+            onOffSwitch.setImage(UIImage(named: "Switch_off"), for: .normal)
             eachScheduleOnOffStatus = false
         } else {
             self.mainOnOffStatus = "y"
-            onOffSwitch.setImage(UIImage(named: "switch_on"), for: .normal)
+            onOffSwitch.setImage(UIImage(named: "Switch_on"), for: .normal)
             eachScheduleOnOffStatus = true
         }
     }
@@ -120,6 +126,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.scheduleName.text = storedScheduleData[indexPath.row].name
             cell.time.text = "\(storedScheduleData[indexPath.row].startTime) ~ \(storedScheduleData[indexPath.row].endTime)"
             cell.day.text = storedScheduleData[indexPath.row].day.joined(separator: ", ")
+            cell.onOffStatus = storedScheduleData[indexPath.row].onOff
+            cell.onOffScheduleInMain(storedScheduleData[indexPath.row].onOff)
+            cell.index = indexPath
+            cell.scheduleCellDelegate = self
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell")
@@ -130,11 +140,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //cell 눌럿을 때 회색박스 안생기게
         tableView.deselectRow(at: indexPath, animated: true)
-        if let addScheduleVC = storyboard?.instantiateViewController(identifier: "AddScheduleVC") as? AddScheduleVC {
+        if let addScheduleVC = storyboard?.instantiateViewController(withIdentifier: "AddScheduleViewController") as? AddScheduleViewController {
             addScheduleVC.checkIfAddOrEdit = 0
             addScheduleVC.name = storedScheduleData[indexPath.row].name
             addScheduleVC.onOffSwitch = storedScheduleData[indexPath.row].onOff
-            
+            print("storedScheduleData[indexPath.row].onOff = \(storedScheduleData[indexPath.row].onOff)")
             addScheduleVC.dayArray = storedScheduleData[indexPath.row].day
             addScheduleVC.startTime = storedScheduleData[indexPath.row].startTime
             addScheduleVC.endTime = storedScheduleData[indexPath.row].endTime

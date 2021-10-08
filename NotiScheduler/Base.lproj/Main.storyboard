@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s9y-K2-YPs">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -9,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--스케줄-->
+        <!--ScheduleViewController-->
         <scene sceneID="ap4-Bf-1uc">
             <objects>
-                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yYq-Ky-mZt" customClass="ViewController" customModule="NotiScheduler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScheduleViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yYq-Ky-mZt" userLabel="ScheduleViewController" customClass="ScheduleViewController" customModule="NotiScheduler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="80R-08-LqR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -248,41 +249,28 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdI-pB-0yZ">
-                                                    <rect key="frame" x="54" y="14" width="108" height="18"/>
+                                                    <rect key="frame" x="45" y="14" width="108" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubH-qr-erb">
-                                                    <rect key="frame" x="54" y="33" width="28" height="14.333333333333336"/>
+                                                    <rect key="frame" x="45" y="33" width="28" height="14.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.55294117649999996" green="0.71764705880000002" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kbr-cm-0kk">
-                                                    <rect key="frame" x="15" y="21.666666666666671" width="24" height="37"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJV-BT-4y3">
-                                                            <rect key="frame" x="0.0" y="0.0" width="24" height="25"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="25" id="Aso-5k-diK"/>
-                                                                <constraint firstAttribute="width" constant="24" id="BzP-xy-PL3"/>
-                                                            </constraints>
-                                                            <color key="tintColor" red="0.55294117649999996" green="0.71764705880000002" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            <state key="normal" image="circlebadge.fill" catalog="system">
-                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                                            </state>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfb-ff-qQj">
-                                                            <rect key="frame" x="0.0" y="24.999999999999996" width="24" height="12.000000000000004"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                            <color key="textColor" red="0.55294117649999996" green="0.71764705880000002" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfb-ff-qQj">
+                                                    <rect key="frame" x="12.666666666666664" y="44" width="20" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="Ldz-o9-w2O"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.55294117649999996" green="0.71764705880000002" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1c5-hz-L3t">
-                                                    <rect key="frame" x="54" y="47.333333333333336" width="250" height="14.333333333333336"/>
+                                                    <rect key="frame" x="45" y="47.333333333333336" width="250" height="14.333333333333336"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="250" id="COR-ee-qYs"/>
                                                     </constraints>
@@ -290,23 +278,41 @@
                                                     <color key="textColor" systemColor="systemGray2Color"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJV-BT-4y3">
+                                                    <rect key="frame" x="15" y="24" width="15" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="15" id="Aso-5k-diK"/>
+                                                        <constraint firstAttribute="width" constant="15" id="BzP-xy-PL3"/>
+                                                    </constraints>
+                                                    <color key="tintColor" red="0.55294117649999996" green="0.71764705880000002" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <state key="normal" image="circlebadge.fill" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="onOffScheduleInMain:" destination="XFM-Ky-8h8" eventType="touchUpInside" id="XI9-aw-2jV"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="ubH-qr-erb" firstAttribute="leading" secondItem="RJV-BT-4y3" secondAttribute="leading" constant="30" id="1a3-39-kbG"/>
                                                 <constraint firstItem="ubH-qr-erb" firstAttribute="top" secondItem="EdI-pB-0yZ" secondAttribute="bottom" constant="1" id="26s-su-YuO"/>
                                                 <constraint firstItem="1c5-hz-L3t" firstAttribute="leading" secondItem="ubH-qr-erb" secondAttribute="leading" id="2Qj-zs-BI4"/>
-                                                <constraint firstItem="kbr-cm-0kk" firstAttribute="leading" secondItem="a5B-aZ-NcR" secondAttribute="leading" constant="15" id="4VE-qv-Zbd"/>
+                                                <constraint firstItem="RJV-BT-4y3" firstAttribute="top" secondItem="a5B-aZ-NcR" secondAttribute="top" constant="24" id="3iq-3a-iH0"/>
+                                                <constraint firstAttribute="bottom" secondItem="lfb-ff-qQj" secondAttribute="bottom" constant="24" id="F17-lK-GLB"/>
+                                                <constraint firstItem="RJV-BT-4y3" firstAttribute="leading" secondItem="a5B-aZ-NcR" secondAttribute="leading" constant="15" id="Kdh-3m-y5Q"/>
+                                                <constraint firstItem="lfb-ff-qQj" firstAttribute="top" secondItem="RJV-BT-4y3" secondAttribute="bottom" constant="5" id="PzV-ne-SNZ"/>
                                                 <constraint firstItem="1c5-hz-L3t" firstAttribute="top" secondItem="ubH-qr-erb" secondAttribute="bottom" id="UOZ-R9-ve9"/>
-                                                <constraint firstItem="ubH-qr-erb" firstAttribute="leading" secondItem="RJV-BT-4y3" secondAttribute="trailing" constant="15" id="aEK-fB-2wE"/>
                                                 <constraint firstItem="EdI-pB-0yZ" firstAttribute="leading" secondItem="ubH-qr-erb" secondAttribute="leading" id="dcj-JV-Y59"/>
-                                                <constraint firstItem="kbr-cm-0kk" firstAttribute="centerY" secondItem="a5B-aZ-NcR" secondAttribute="centerY" id="fe3-0G-pG2"/>
+                                                <constraint firstItem="lfb-ff-qQj" firstAttribute="centerX" secondItem="RJV-BT-4y3" secondAttribute="centerX" id="fkx-VB-ZU6"/>
                                                 <constraint firstItem="ubH-qr-erb" firstAttribute="centerY" secondItem="a5B-aZ-NcR" secondAttribute="centerY" id="tXk-29-L7B"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="day" destination="1c5-hz-L3t" id="Rke-02-7u8"/>
-                                            <outlet property="scheduleIcon" destination="RJV-BT-4y3" id="Voz-iN-qcs"/>
                                             <outlet property="scheduleName" destination="EdI-pB-0yZ" id="gvn-Id-ywH"/>
+                                            <outlet property="scheduleOnOffIcon" destination="RJV-BT-4y3" id="riH-F5-KHV"/>
+                                            <outlet property="scheduleOnOffLabel" destination="lfb-ff-qQj" id="9Qs-lW-h7t"/>
                                             <outlet property="time" destination="ubH-qr-erb" id="fDy-0W-GFW"/>
                                         </connections>
                                     </tableViewCell>
@@ -333,7 +339,7 @@
                                             <constraint firstAttribute="width" constant="50" id="J7V-jZ-LZh"/>
                                             <constraint firstAttribute="height" constant="50" id="oWx-v8-5zc"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="switch_on"/>
+                                        <state key="normal" title="Button" image="Switch_on"/>
                                         <connections>
                                             <action selector="onOffSwitch:" destination="yYq-Ky-mZt" eventType="touchUpInside" id="TXR-O4-U8I"/>
                                         </connections>
@@ -390,7 +396,7 @@
                             <constraint firstAttribute="trailing" secondItem="073-os-Dgj" secondAttribute="trailing" id="u6o-XH-xFg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="스케줄" id="1hg-Sd-ikD"/>
+                    <navigationItem key="navigationItem" title="스케줄" id="1hg-Sd-ikD" userLabel="Schedule"/>
                     <connections>
                         <outlet property="onOffSwitch" destination="cLz-ju-vYe" id="BLu-qf-RDK"/>
                         <outlet property="scheduleTableView" destination="Ehl-bj-XoZ" id="vzx-b1-R9M"/>
@@ -400,10 +406,10 @@
             </objects>
             <point key="canvasLocation" x="184.80000000000001" y="-174.38423645320196"/>
         </scene>
-        <!--Add ScheduleVC-->
+        <!--AddScheduleViewController-->
         <scene sceneID="fCK-SB-BQg">
             <objects>
-                <viewController storyboardIdentifier="AddScheduleVC" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mQO-un-SWO" customClass="AddScheduleVC" customModule="NotiScheduler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddScheduleViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mQO-un-SWO" userLabel="AddScheduleViewController" customClass="AddScheduleViewController" customModule="NotiScheduler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rIw-hD-tsO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -456,7 +462,7 @@
                                                                 <constraint firstAttribute="width" constant="50" id="yR4-um-O7Q"/>
                                                                 <constraint firstAttribute="height" constant="50" id="zXk-of-x6t"/>
                                                             </constraints>
-                                                            <state key="normal" title="Button" image="switch_on"/>
+                                                            <state key="normal" title="Button" image="Switch_on"/>
                                                             <connections>
                                                                 <action selector="scheduleOnOffButton:" destination="HwQ-gv-eh8" eventType="touchUpInside" id="F1o-j9-9Lf"/>
                                                             </connections>
@@ -486,92 +492,148 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tBQ-1y-nVV">
-                                                            <rect key="frame" x="10" y="0.0" width="355" height="45"/>
+                                                        <stackView opaque="NO" contentMode="scaleAspectFit" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tBQ-1y-nVV">
+                                                            <rect key="frame" x="20" y="0.0" width="335" height="45"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="sun" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkc-E1-33k">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="50.666666666666664" height="45"/>
+                                                                <button opaque="NO" contentMode="scaleAspectFit" restorationIdentifier="sun" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="headTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkc-E1-33k">
+                                                                    <rect key="frame" x="0.0" y="7.6666666666666679" width="30" height="30.000000000000004"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="30" id="8tR-gD-WrO"/>
+                                                                        <constraint firstAttribute="width" constant="30" id="LhA-tI-aMT"/>
+                                                                    </constraints>
                                                                     <color key="tintColor" red="0.53582071520618557" green="0.53582071520618557" blue="0.53582071520618557" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                    <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button">
-                                                                        <imageReference key="image" image="s.circle.fill" catalog="system" symbolScale="large"/>
-                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                        <imageReference key="image" image="s.circle.fill.gray" symbolScale="large"/>
+                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium"/>
                                                                     </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="self.imageView.contentMode">
+                                                                            <integer key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="eKE-VL-cyK"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FxS-KS-13z">
-                                                                    <rect key="frame" x="50.666666666666671" y="0.0" width="50.666666666666671" height="45"/>
+                                                                <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FxS-KS-13z">
+                                                                    <rect key="frame" x="51" y="7.6666666666666679" width="30" height="30.000000000000004"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="30" id="flp-cE-98j"/>
+                                                                        <constraint firstAttribute="height" constant="30" id="h1c-NQ-EFy"/>
+                                                                    </constraints>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                    <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button">
-                                                                        <imageReference key="image" image="m.circle.fill" catalog="system" symbolScale="large"/>
+                                                                        <imageReference key="image" image="m.circle.fill.gray" symbolScale="large"/>
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="self.imageView.contentMode">
+                                                                            <integer key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="5AV-zc-thH"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Vy-cD-6Zq">
-                                                                    <rect key="frame" x="101.33333333333333" y="0.0" width="50.666666666666671" height="45"/>
+                                                                <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Vy-cD-6Zq">
+                                                                    <rect key="frame" x="101.66666666666667" y="7.6666666666666679" width="30.000000000000014" height="30.000000000000004"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="30" id="1Dc-kd-beh"/>
+                                                                        <constraint firstAttribute="width" constant="30" id="AFr-tY-tGC"/>
+                                                                    </constraints>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                    <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button">
-                                                                        <imageReference key="image" image="t.circle.fill" catalog="system" symbolScale="large"/>
+                                                                        <imageReference key="image" image="t.circle.fill.gray" symbolScale="large"/>
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
                                                                     <attributedString key="userComments">
                                                                         <fragment content="                                                                          "/>
                                                                     </attributedString>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="self.imageView.contentMode">
+                                                                            <integer key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="H9g-E3-EHx"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qi-M4-59P">
-                                                                    <rect key="frame" x="152" y="0.0" width="51" height="45"/>
+                                                                <button opaque="NO" tag="3" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qi-M4-59P">
+                                                                    <rect key="frame" x="152.66666666666666" y="7.6666666666666679" width="30" height="30.000000000000004"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="30" id="9On-p1-Xyh"/>
+                                                                        <constraint firstAttribute="height" constant="30" id="hva-xz-6PF"/>
+                                                                    </constraints>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                    <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button">
-                                                                        <imageReference key="image" image="w.circle.fill" catalog="system" symbolScale="large"/>
+                                                                        <imageReference key="image" image="w.circle.fill.gray" symbolScale="large"/>
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="self.imageView.contentMode">
+                                                                            <integer key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="xK4-ex-iEa"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cc-px-Jqf">
-                                                                    <rect key="frame" x="203" y="0.0" width="50.666666666666657" height="45"/>
+                                                                <button opaque="NO" tag="4" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cc-px-Jqf">
+                                                                    <rect key="frame" x="203.33333333333334" y="7.6666666666666679" width="30" height="30.000000000000004"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="30" id="GRk-4C-e4t"/>
+                                                                        <constraint firstAttribute="height" constant="30" id="OWM-dy-s9v"/>
+                                                                    </constraints>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                    <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button">
-                                                                        <imageReference key="image" image="t.circle.fill" catalog="system" symbolScale="large"/>
+                                                                        <imageReference key="image" image="t.circle.fill.gray" symbolScale="large"/>
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="self.imageView.contentMode">
+                                                                            <integer key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="SrT-CC-cI6"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ot-jC-PqW">
-                                                                    <rect key="frame" x="253.66666666666666" y="0.0" width="50.666666666666657" height="45"/>
+                                                                <button opaque="NO" tag="5" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ot-jC-PqW">
+                                                                    <rect key="frame" x="254.33333333333331" y="7.6666666666666679" width="30" height="30.000000000000004"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="30" id="jnT-jL-U0C"/>
+                                                                        <constraint firstAttribute="width" constant="30" id="s5x-gD-gh3"/>
+                                                                    </constraints>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                    <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button">
-                                                                        <imageReference key="image" image="f.circle.fill" catalog="system" symbolScale="large"/>
+                                                                        <imageReference key="image" image="f.circle.fill.gray" symbolScale="large"/>
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="self.imageView.contentMode">
+                                                                            <integer key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="KOf-1z-Bgi"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button opaque="NO" tag="6" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFu-yx-nkt">
-                                                                    <rect key="frame" x="304.33333333333331" y="0.0" width="50.666666666666686" height="45"/>
+                                                                <button opaque="NO" tag="6" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFu-yx-nkt">
+                                                                    <rect key="frame" x="305" y="7.6666666666666679" width="30" height="30.000000000000004"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="30" id="egC-Ia-Gkf"/>
+                                                                        <constraint firstAttribute="height" constant="30" id="ldY-rA-2vz"/>
+                                                                    </constraints>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                    <inset key="contentEdgeInsets" minX="13" minY="0.0" maxX="13" maxY="0.0"/>
                                                                     <state key="normal" title="Button">
-                                                                        <imageReference key="image" image="s.circle.fill" catalog="system" symbolScale="large"/>
+                                                                        <imageReference key="image" image="s.circle.fill.gray" symbolScale="large"/>
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="self.imageView.contentMode">
+                                                                            <integer key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                     <connections>
                                                                         <action selector="dayOnOff:" destination="zwT-00-mCG" eventType="touchUpInside" id="sGE-lR-Jov"/>
                                                                     </connections>
@@ -580,9 +642,9 @@
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="tBQ-1y-nVV" secondAttribute="trailing" constant="10" id="Fzt-Za-M5D"/>
+                                                        <constraint firstAttribute="trailing" secondItem="tBQ-1y-nVV" secondAttribute="trailing" constant="20" id="Fzt-Za-M5D"/>
                                                         <constraint firstAttribute="bottom" secondItem="tBQ-1y-nVV" secondAttribute="bottom" id="K3Z-9w-chD"/>
-                                                        <constraint firstItem="tBQ-1y-nVV" firstAttribute="leading" secondItem="5L2-cb-VPH" secondAttribute="leading" constant="10" id="Re0-EZ-laM"/>
+                                                        <constraint firstItem="tBQ-1y-nVV" firstAttribute="leading" secondItem="5L2-cb-VPH" secondAttribute="leading" constant="20" id="Re0-EZ-laM"/>
                                                         <constraint firstItem="tBQ-1y-nVV" firstAttribute="top" secondItem="5L2-cb-VPH" secondAttribute="top" id="V9v-YK-ZqY"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
@@ -835,15 +897,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Switch_on" width="100" height="100"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="circlebadge.fill" catalog="system" width="128" height="120"/>
-        <image name="f.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="m.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="f.circle.fill.gray" width="40" height="40"/>
+        <image name="m.circle.fill.gray" width="40" height="40"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="s.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="switch_on" width="100" height="100"/>
-        <image name="t.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="w.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="s.circle.fill.gray" width="40" height="40"/>
+        <image name="t.circle.fill.gray" width="40" height="40"/>
+        <image name="w.circle.fill.gray" width="40" height="40"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -10,13 +10,12 @@
 		8B2061E926F1E7D000FAF115 /* AddScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2061E826F1E7D000FAF115 /* AddScheduleCell.swift */; };
 		8B2DAA3D2701833000454B8E /* ScheduleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2DAA3C2701833000454B8E /* ScheduleData.swift */; };
 		8B3CC8EA26E9C1EB0078F6A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3CC8E926E9C1EB0078F6A7 /* AppDelegate.swift */; };
-		8B3CC8EC26E9C1EB0078F6A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3CC8EB26E9C1EB0078F6A7 /* SceneDelegate.swift */; };
-		8B3CC8EE26E9C1EB0078F6A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3CC8ED26E9C1EB0078F6A7 /* ViewController.swift */; };
+		8B3CC8EE26E9C1EB0078F6A7 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3CC8ED26E9C1EB0078F6A7 /* ScheduleViewController.swift */; };
 		8B3CC8F126E9C1EB0078F6A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B3CC8EF26E9C1EB0078F6A7 /* Main.storyboard */; };
 		8B3CC8F326E9C1F00078F6A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B3CC8F226E9C1F00078F6A7 /* Assets.xcassets */; };
 		8B3CC8F626E9C1F00078F6A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B3CC8F426E9C1F00078F6A7 /* LaunchScreen.storyboard */; };
 		8B3CC8FE26EAF9ED0078F6A7 /* OnOffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3CC8FD26EAF9ED0078F6A7 /* OnOffCell.swift */; };
-		8BF15A7A26F09008008AA901 /* AddScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF15A7926F09008008AA901 /* AddScheduleVC.swift */; };
+		8BF15A7A26F09008008AA901 /* AddScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF15A7926F09008008AA901 /* AddScheduleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,14 +23,13 @@
 		8B2DAA3C2701833000454B8E /* ScheduleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleData.swift; sourceTree = "<group>"; };
 		8B3CC8E626E9C1EB0078F6A7 /* NotiScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotiScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B3CC8E926E9C1EB0078F6A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8B3CC8EB26E9C1EB0078F6A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8B3CC8ED26E9C1EB0078F6A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8B3CC8ED26E9C1EB0078F6A7 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		8B3CC8F026E9C1EB0078F6A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8B3CC8F226E9C1F00078F6A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B3CC8F526E9C1F00078F6A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B3CC8F726E9C1F00078F6A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B3CC8FD26EAF9ED0078F6A7 /* OnOffCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnOffCell.swift; sourceTree = "<group>"; };
-		8BF15A7926F09008008AA901 /* AddScheduleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleVC.swift; sourceTree = "<group>"; };
+		8BF15A7926F09008008AA901 /* AddScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +55,8 @@
 		8B2DAA3B26FD536800454B8E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8BF15A7926F09008008AA901 /* AddScheduleVC.swift */,
-				8B3CC8ED26E9C1EB0078F6A7 /* ViewController.swift */,
+				8BF15A7926F09008008AA901 /* AddScheduleViewController.swift */,
+				8B3CC8ED26E9C1EB0078F6A7 /* ScheduleViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -94,7 +92,6 @@
 				8B2DAA3B26FD536800454B8E /* Controller */,
 				8B2DAA3626FC072600454B8E /* Cells */,
 				8B3CC8E926E9C1EB0078F6A7 /* AppDelegate.swift */,
-				8B3CC8EB26E9C1EB0078F6A7 /* SceneDelegate.swift */,
 				8B3CC8EF26E9C1EB0078F6A7 /* Main.storyboard */,
 				8B3CC8F226E9C1F00078F6A7 /* Assets.xcassets */,
 				8B3CC8F426E9C1F00078F6A7 /* LaunchScreen.storyboard */,
@@ -173,11 +170,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B3CC8EE26E9C1EB0078F6A7 /* ViewController.swift in Sources */,
+				8B3CC8EE26E9C1EB0078F6A7 /* ScheduleViewController.swift in Sources */,
 				8B3CC8EA26E9C1EB0078F6A7 /* AppDelegate.swift in Sources */,
-				8B3CC8EC26E9C1EB0078F6A7 /* SceneDelegate.swift in Sources */,
 				8B2061E926F1E7D000FAF115 /* AddScheduleCell.swift in Sources */,
-				8BF15A7A26F09008008AA901 /* AddScheduleVC.swift in Sources */,
+				8BF15A7A26F09008008AA901 /* AddScheduleViewController.swift in Sources */,
 				8B2DAA3D2701833000454B8E /* ScheduleData.swift in Sources */,
 				8B3CC8FE26EAF9ED0078F6A7 /* OnOffCell.swift in Sources */,
 			);
@@ -329,6 +325,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M92CLN7T7A;
 				INFOPLIST_FILE = NotiScheduler/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -348,6 +345,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M92CLN7T7A;
 				INFOPLIST_FILE = NotiScheduler/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
