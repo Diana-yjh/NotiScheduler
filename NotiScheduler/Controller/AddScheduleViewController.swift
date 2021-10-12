@@ -60,6 +60,8 @@ class AddScheduleViewController: UIViewController, UITableViewDataSource, UITabl
     }
     func selectedDay(dayArray: [String]) {
         self.dayArray = dayArray
+        let week = DateFormatter().shortWeekdaySymbols!
+        self.dayArray.sort { week.firstIndex(of:  $0)! < week.firstIndex(of: $1)! }
     }
     func startTime(time: String) {
         self.startTime = time

@@ -371,6 +371,12 @@
                                     <constraint firstAttribute="height" constant="35" id="kIz-sA-44w"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please add schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwu-bO-Hb0">
+                                <rect key="frame" x="0.0" y="204" width="375" height="574"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.55294117649999996" green="0.71764705880000002" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pCM-av-cSA"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -380,17 +386,21 @@
                             <constraint firstItem="TVp-Ou-J8H" firstAttribute="leading" secondItem="pCM-av-cSA" secondAttribute="leading" id="2Me-gb-3nB"/>
                             <constraint firstItem="qIz-75-09R" firstAttribute="leading" secondItem="pCM-av-cSA" secondAttribute="leading" id="2YX-AN-aci"/>
                             <constraint firstItem="073-os-Dgj" firstAttribute="top" secondItem="80R-08-LqR" secondAttribute="top" id="3w4-Pg-vqx"/>
+                            <constraint firstItem="pCM-av-cSA" firstAttribute="trailing" secondItem="bwu-bO-Hb0" secondAttribute="trailing" id="80w-YT-Fw4"/>
                             <constraint firstItem="BuM-XZ-vmM" firstAttribute="top" secondItem="TVp-Ou-J8H" secondAttribute="bottom" id="BCP-4f-JP0"/>
                             <constraint firstItem="Ehl-bj-XoZ" firstAttribute="top" secondItem="qIz-75-09R" secondAttribute="bottom" id="C3h-VI-Vc1"/>
                             <constraint firstAttribute="bottom" secondItem="Ehl-bj-XoZ" secondAttribute="bottom" id="ChD-V1-7q9"/>
                             <constraint firstItem="Ehl-bj-XoZ" firstAttribute="leading" secondItem="pCM-av-cSA" secondAttribute="leading" id="Ees-XX-pag"/>
                             <constraint firstItem="pCM-av-cSA" firstAttribute="trailing" secondItem="Ehl-bj-XoZ" secondAttribute="trailing" id="Fvd-2r-avl"/>
                             <constraint firstItem="TVp-Ou-J8H" firstAttribute="top" secondItem="pCM-av-cSA" secondAttribute="top" id="K9i-xE-nZg"/>
+                            <constraint firstItem="bwu-bO-Hb0" firstAttribute="top" secondItem="qIz-75-09R" secondAttribute="bottom" id="SFv-A9-Vdr"/>
                             <constraint firstItem="BuM-XZ-vmM" firstAttribute="leading" secondItem="pCM-av-cSA" secondAttribute="leading" id="V45-Qo-tFe"/>
                             <constraint firstItem="ewW-uj-K6J" firstAttribute="centerY" secondItem="TVp-Ou-J8H" secondAttribute="centerY" id="XZ6-du-W7f"/>
+                            <constraint firstItem="bwu-bO-Hb0" firstAttribute="leading" secondItem="pCM-av-cSA" secondAttribute="leading" id="Yjo-cg-HE7"/>
                             <constraint firstItem="ewW-uj-K6J" firstAttribute="leading" secondItem="pCM-av-cSA" secondAttribute="leading" constant="15" id="e1f-t8-dRR"/>
                             <constraint firstItem="qIz-75-09R" firstAttribute="trailing" secondItem="pCM-av-cSA" secondAttribute="trailing" id="i8I-zS-ELA"/>
                             <constraint firstItem="TVp-Ou-J8H" firstAttribute="top" secondItem="073-os-Dgj" secondAttribute="bottom" id="iFu-yJ-c9N"/>
+                            <constraint firstItem="pCM-av-cSA" firstAttribute="bottom" secondItem="bwu-bO-Hb0" secondAttribute="bottom" id="moy-oD-xTX"/>
                             <constraint firstItem="pCM-av-cSA" firstAttribute="trailing" secondItem="TVp-Ou-J8H" secondAttribute="trailing" id="sQN-bE-NtY"/>
                             <constraint firstItem="pCM-av-cSA" firstAttribute="trailing" secondItem="BuM-XZ-vmM" secondAttribute="trailing" id="tWN-6K-Q23"/>
                             <constraint firstAttribute="trailing" secondItem="073-os-Dgj" secondAttribute="trailing" id="u6o-XH-xFg"/>
@@ -398,6 +408,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="스케줄" id="1hg-Sd-ikD" userLabel="Schedule"/>
                     <connections>
+                        <outlet property="defaultBackgroundLabel" destination="bwu-bO-Hb0" id="pWT-Oh-DFe"/>
                         <outlet property="onOffSwitch" destination="cLz-ju-vYe" id="BLu-qf-RDK"/>
                         <outlet property="scheduleTableView" destination="Ehl-bj-XoZ" id="vzx-b1-R9M"/>
                     </connections>
@@ -417,7 +428,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U0S-Eb-EuU">
                                 <rect key="frame" x="0.0" y="89" width="375" height="723"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9qr-N5-frt" userLabel="edit Schedule Table">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9qr-N5-frt" userLabel="edit Schedule Table">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="723"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -488,14 +499,14 @@
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DayOnOffCell" rowHeight="45" id="zwT-00-mCG" customClass="DayOnOffCell" customModule="NotiScheduler" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="104.33333396911621" width="375" height="45"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zwT-00-mCG" id="5L2-cb-VPH">
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zwT-00-mCG" id="5L2-cb-VPH">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleAspectFit" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tBQ-1y-nVV">
                                                             <rect key="frame" x="20" y="0.0" width="335" height="45"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleAspectFit" restorationIdentifier="sun" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="headTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkc-E1-33k">
+                                                                <button opaque="NO" contentMode="scaleAspectFit" restorationIdentifier="sun" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkc-E1-33k">
                                                                     <rect key="frame" x="0.0" y="7.6666666666666679" width="30" height="30.000000000000004"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="30" id="8tR-gD-WrO"/>
@@ -503,8 +514,7 @@
                                                                     </constraints>
                                                                     <color key="tintColor" red="0.53582071520618557" green="0.53582071520618557" blue="0.53582071520618557" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <state key="normal" title="Button">
-                                                                        <imageReference key="image" image="s.circle.fill.gray" symbolScale="large"/>
-                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium"/>
+                                                                        <imageReference key="image" image="S.circle.fill.gray" symbolScale="large"/>
                                                                     </state>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="self.imageView.contentMode">
@@ -523,8 +533,7 @@
                                                                     </constraints>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <state key="normal" title="Button">
-                                                                        <imageReference key="image" image="m.circle.fill.gray" symbolScale="large"/>
-                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                        <imageReference key="image" image="M.circle.fill.gray" symbolScale="large"/>
                                                                     </state>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="self.imageView.contentMode">
@@ -543,8 +552,7 @@
                                                                     </constraints>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <state key="normal" title="Button">
-                                                                        <imageReference key="image" image="t.circle.fill.gray" symbolScale="large"/>
-                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                        <imageReference key="image" image="T.circle.fill.gray" symbolScale="large"/>
                                                                     </state>
                                                                     <attributedString key="userComments">
                                                                         <fragment content="                                                                          "/>
@@ -566,8 +574,7 @@
                                                                     </constraints>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <state key="normal" title="Button">
-                                                                        <imageReference key="image" image="w.circle.fill.gray" symbolScale="large"/>
-                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                        <imageReference key="image" image="W.circle.fill.gray" symbolScale="large"/>
                                                                     </state>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="self.imageView.contentMode">
@@ -586,8 +593,7 @@
                                                                     </constraints>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <state key="normal" title="Button">
-                                                                        <imageReference key="image" image="t.circle.fill.gray" symbolScale="large"/>
-                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                        <imageReference key="image" image="T.circle.fill.gray" symbolScale="large"/>
                                                                     </state>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="self.imageView.contentMode">
@@ -606,8 +612,7 @@
                                                                     </constraints>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <state key="normal" title="Button">
-                                                                        <imageReference key="image" image="f.circle.fill.gray" symbolScale="large"/>
-                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                        <imageReference key="image" image="F.circle.fill.gray" symbolScale="large"/>
                                                                     </state>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="self.imageView.contentMode">
@@ -626,8 +631,7 @@
                                                                     </constraints>
                                                                     <color key="tintColor" red="0.53582071519999996" green="0.53582071519999996" blue="0.53582071519999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <state key="normal" title="Button">
-                                                                        <imageReference key="image" image="s.circle.fill.gray" symbolScale="large"/>
-                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                        <imageReference key="image" image="S.circle.fill.gray" symbolScale="large"/>
                                                                     </state>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="self.imageView.contentMode">
@@ -897,15 +901,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Switch_on" width="100" height="100"/>
+        <image name="F.circle.fill.gray" width="40" height="40"/>
+        <image name="M.circle.fill.gray" width="40" height="40"/>
+        <image name="S.circle.fill.gray" width="40" height="40"/>
+        <image name="Switch_on" width="50" height="50"/>
+        <image name="T.circle.fill.gray" width="40" height="40"/>
+        <image name="W.circle.fill.gray" width="40" height="40"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="circlebadge.fill" catalog="system" width="128" height="120"/>
-        <image name="f.circle.fill.gray" width="40" height="40"/>
-        <image name="m.circle.fill.gray" width="40" height="40"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="s.circle.fill.gray" width="40" height="40"/>
-        <image name="t.circle.fill.gray" width="40" height="40"/>
-        <image name="w.circle.fill.gray" width="40" height="40"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

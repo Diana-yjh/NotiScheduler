@@ -95,37 +95,37 @@ class DayOnOffCell: UITableViewCell {
         case 0:
             dayState = sunOnOff
             day = sun
-            text = "sun"
+            text = "Sun"
             sunOnOff = buttonOnOff(dayState, day, text)
         case 1:
             dayState = monOnOff
             day = mon
-            text = "mon"
+            text = "Mon"
             monOnOff = buttonOnOff(dayState, day, text)
         case 2:
             dayState = tueOnOff
             day = tue
-            text = "tue"
+            text = "Tue"
             tueOnOff = buttonOnOff(dayState, day, text)
         case 3:
             dayState = wedOnOff
             day = wed
-            text = "wed"
+            text = "Wed"
             wedOnOff = buttonOnOff(dayState, day, text)
         case 4:
             dayState = thurOnOff
             day = thur
-            text = "thur"
+            text = "Thu"
             thurOnOff = buttonOnOff(dayState, day, text)
         case 5:
             dayState = friOnOff
             day = fri
-            text = "fri"
+            text = "Fri"
             friOnOff = buttonOnOff(dayState, day, text)
         case 6:
             dayState = satOnOff
             day = sat
-            text = "sat"
+            text = "Sat"
             satOnOff = buttonOnOff(dayState, day, text)
         default:
             return
@@ -155,22 +155,22 @@ class DayOnOffCell: UITableViewCell {
             let text = dayArray[i]
             let word = text.map{String($0)}[0]
             switch text {
-            case "mon":
+            case "Mon":
                 setDaysOn(day: mon, word: word)
                 monOnOff = true
-            case "tue":
+            case "Tue":
                 setDaysOn(day: tue, word: word)
                 tueOnOff = true
-            case "wed":
+            case "Wed":
                 setDaysOn(day: wed, word: word)
                 wedOnOff = true
-            case "thur":
+            case "Thu":
                 setDaysOn(day: thur, word: word)
                 thurOnOff = true
-            case "fri":
+            case "Fri":
                 setDaysOn(day: fri, word: word)
                 friOnOff = true
-            case "sat":
+            case "Sat":
                 setDaysOn(day: sat, word: word)
                 satOnOff = true
             default:

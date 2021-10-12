@@ -16,6 +16,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     public var eachScheduleOnOffStatus: Bool = true
     public var totalScheduleCount: Int = 0
     public var storedScheduleData: [ScheduleData] = []
+    @IBOutlet weak var defaultBackgroundLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         scheduleTableView.rowHeight = UITableView.automaticDimension
         scheduleTableView.delegate = self
         scheduleTableView.dataSource = self
+        
     }
     
     //to maintain the title
@@ -36,6 +38,12 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         //let addScheduleVC: AddScheduleViewController = storyboard?.instantiateViewController(identifier: "AddScheduleViewController") as! AddScheduleViewController
         //addScheduleVC.editScheduleVCDelegate = self
         scheduleTableView.reloadData()
+        
+        if totalScheduleCount != 0 {
+            defaultBackgroundLabel.isHidden = true
+        } else {
+            defaultBackgroundLabel.isHidden = false
+        }
     }
     
     func loadUpdatedDataToViewController(data: ScheduleData) {
@@ -91,6 +99,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
                 print("theJSONText = \(theJSONText!)")
             }
         }
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func onOffSwitch(_ sender: Any) {
