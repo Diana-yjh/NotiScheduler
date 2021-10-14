@@ -1,0 +1,120 @@
+
+/* Class = "UILabel"; text = "Mon"; ObjectID = "1Qp-HD-dzR"; */
+"1Qp-HD-dzR.text" = "Mon";
+
+/* Class = "UILabel"; text = "Day"; ObjectID = "1c5-hz-L3t"; */
+"1c5-hz-L3t.text" = "Day";
+
+/* Class = "UINavigationItem"; title = "스케줄"; ObjectID = "1hg-Sd-ikD"; */
+"1hg-Sd-ikD.title" = "스케줄";
+
+/* Class = "UILabel"; text = "12P"; ObjectID = "21m-3Q-tpp"; */
+"21m-3Q-tpp.text" = "12P";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "3cc-px-Jqf"; */
+"3cc-px-Jqf.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "44Z-LA-Q4S"; */
+"44Z-LA-Q4S.normalTitle" = "Edit";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "4ot-jC-PqW"; */
+"4ot-jC-PqW.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "6Qi-M4-59P"; */
+"6Qi-M4-59P.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Thur"; ObjectID = "78q-Uk-tdi"; */
+"78q-Uk-tdi.text" = "Thur";
+
+/* Class = "UILabel"; text = "8P"; ObjectID = "7WC-GC-B44"; */
+"7WC-GC-B44.text" = "8P";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "8Vy-cD-6Zq"; Note = "                                                                          "; */
+"8Vy-cD-6Zq.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Add"; ObjectID = "CIH-wS-gYY"; */
+"CIH-wS-gYY.text" = "Add";
+
+/* Class = "UILabel"; text = "Schedule Name"; ObjectID = "EdI-pB-0yZ"; */
+"EdI-pB-0yZ.text" = "Schedule Name";
+
+/* Class = "UILabel"; text = "Tue"; ObjectID = "EfM-N5-20S"; */
+"EfM-N5-20S.text" = "Tue";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "FxS-KS-13z"; */
+"FxS-KS-13z.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Start Time"; ObjectID = "Gj7-Ni-dGt"; */
+"Gj7-Ni-dGt.text" = "Start Time";
+
+/* Class = "UILabel"; text = "Sun"; ObjectID = "HeZ-Mo-cVf"; */
+"HeZ-Mo-cVf.text" = "Sun";
+
+/* Class = "UIButton"; normalTitle = "Schedule1"; ObjectID = "Mlz-wL-KT6"; */
+"Mlz-wL-KT6.normalTitle" = "Schedule1";
+
+/* Class = "UILabel"; text = "4A"; ObjectID = "Mp1-4a-z2Y"; */
+"Mp1-4a-z2Y.text" = "4A";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "MtN-zB-UAv"; */
+"MtN-zB-UAv.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "12A"; ObjectID = "Pch-Ba-FY3"; */
+"Pch-Ba-FY3.text" = "12A";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Tkc-E1-33k"; */
+"Tkc-E1-33k.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "~"; ObjectID = "XMl-0N-bwz"; */
+"XMl-0N-bwz.text" = "~";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "YFu-yx-nkt"; */
+"YFu-yx-nkt.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Please add schedule"; ObjectID = "bwu-bO-Hb0"; */
+"bwu-bO-Hb0.text" = "Please add schedule";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "cLz-ju-vYe"; */
+"cLz-ju-vYe.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "8A"; ObjectID = "csP-s2-gOJ"; */
+"csP-s2-gOJ.text" = "8A";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "csR-7v-w9f"; */
+"csR-7v-w9f.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "4P"; ObjectID = "dzF-TD-X7x"; */
+"dzF-TD-X7x.text" = "4P";
+
+/* Class = "UILabel"; text = "Wed"; ObjectID = "fO8-tc-ylx"; */
+"fO8-tc-ylx.text" = "Wed";
+
+/* Class = "UILabel"; text = "End Time"; ObjectID = "i1T-y2-zHw"; */
+"i1T-y2-zHw.text" = "End Time";
+
+/* Class = "UIButton"; normalTitle = "Delete"; ObjectID = "j4O-p9-g0J"; */
+"j4O-p9-g0J.normalTitle" = "Delete";
+
+/* Class = "UIButton"; normalTitle = "Schedule On/Off"; ObjectID = "kXh-Z0-ZrU"; */
+"kXh-Z0-ZrU.normalTitle" = "Schedule On/Off";
+
+/* Class = "UILabel"; text = "12A"; ObjectID = "lNM-6V-at9"; */
+"lNM-6V-at9.text" = "12A";
+
+/* Class = "UILabel"; text = "On"; ObjectID = "lfb-ff-qQj"; */
+"lfb-ff-qQj.text" = "On";
+
+/* Class = "UILabel"; text = "Sat"; ObjectID = "pR8-4W-WoY"; */
+"pR8-4W-WoY.text" = "Sat";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "ubH-qr-erb"; */
+"ubH-qr-erb.text" = "Time";
+
+/* Class = "UILabel"; text = "Fri"; ObjectID = "wDC-Yr-O24"; */
+"wDC-Yr-O24.text" = "Fri";
+
+/* Class = "UILabel"; text = "Schedules"; ObjectID = "xfr-wU-bs4"; */
+"xfr-wU-bs4.text" = "Schedules";
+
+/* Class = "UILabel"; text = "Schedule"; ObjectID = "xnT-Qj-vwk"; */
+"xnT-Qj-vwk.text" = "Schedule";

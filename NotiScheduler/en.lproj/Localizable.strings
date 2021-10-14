@@ -1,0 +1,44 @@
+/*  
+  localization.strings
+  NotiScheduler
+
+  Created by Yejin Hong on 2021/10/13.
+*/
+
+"add" = "Add";
+"arrow_back" = "Back";
+"arrow_next" = "Next";
+"cancel" = "Cancel";
+"delete " = "Delete";
+"delete_schedule" = "Delete Schedule";
+"edit" = "Edit";
+"endTime" = "End Time";
+"edit_name" = "Edit Name";
+"edit_schedule_name" = "Edit Schedule Name";
+"fri_day" = "Fri";
+"mon_day" = "Mon";
+"ok" = "OK";
+"on" = "On";
+"off" = "Off";
+"remove" = "Remove";
+"schedule_on_off" = "Schedule On/Off";
+"schedules" = "Schedules";
+"schedule_add_message" = "Please add schedule";
+"schedule_add_error_message" = "You have reached the maximum number of schedules allowed";
+"schedule_delete_message" = "Are You Sure You Want to Delete This Schedule?";
+"schedule_save_message" = "Are You Sure You Want to Save This Schedule?";
+"schedule_error" = "Schedule Error";
+"schedule_times_error_message" = "Start time and End time cannot be the same. Please change times, then try again";
+"schedule_days_error_message" = "You must select at least one day for this schedule";
+"startTime" = "Start Time";
+"save" = "Save";
+"save_error" = "Save Error";
+"save_schedule" = "Save Schedule";
+"sun_day" = "Sun";
+"sat_day" = "Sat";
+"tues_day" = "Tue";
+"timeSetting" = "Time Settings";
+"thurs_day" = "Thu";
+"wed_day" = "Wed";
+"yes" = "Yes";
+

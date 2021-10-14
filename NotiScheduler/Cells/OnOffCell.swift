@@ -55,13 +55,13 @@ class ScheduleCell: UITableViewCell {
     func scheduleOn(_ icon: UIButton, _ label: UILabel){
         icon.setImage(UIImage(named:"circlebadge.fill.green.png"), for: .normal)
         
-        label.text = "On"
+        label.text = NSLocalizedString("on", comment: "")
         label.textColor = UIColor(red: 141/225.0, green: 183/225.0, blue: 74/225.0, alpha: 1.0)
     }
     
     func scheduleOff(_ icon: UIButton, _ label: UILabel){
         icon.setImage(UIImage(named:"circlebadge.fill.gray.png"), for: .normal)
-        label.text = "Off"
+        label.text = NSLocalizedString("off", comment: "")
         label.textColor = UIColor(red: 137/225.0, green: 137/225.0, blue: 137/225.0, alpha: 1.0)
     }
     

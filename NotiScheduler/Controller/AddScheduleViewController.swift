@@ -14,7 +14,7 @@ protocol EditScheduleVCDelegate {
     func deleteDataFromViewController(indexPath: IndexPath)
 }
 
-class AddScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, OnOffCell2Delegate, DayOnOffCellDelegate, TimeCellDelegate, CancelCellDelegate, DeleteCellDelegate {
+class AddScheduleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, OnOffCell2Delegate, DayOnOffCellDelegate, TimeCellDelegate, CancelCellDelegate, DeleteCellDelegate {
     
     @IBOutlet weak var addScheduleTable: UITableView!
     @IBOutlet weak var viewTitle: UILabel!
@@ -36,20 +36,28 @@ class AddScheduleViewController: UIViewController, UITableViewDataSource, UITabl
         addScheduleTable.rowHeight = UITableView.automaticDimension
         addScheduleTable.delegate = self
         addScheduleTable.dataSource = self
-        viewTitle.text = checkIfAddOrEdit == 0 ? "Edit" : "Add"
+        viewTitle.text = checkIfAddOrEdit == 0 ? NSLocalizedString("edit", comment: "") : NSLocalizedString("add", comment: "")
         
         self.navigationController?.isNavigationBarHidden = true
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        return updatedText.count <= 20
+    }
+    
     func editNameAlert() {
-        let alert = UIAlertController(title: "Edit", message: "Edit schedule name.", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: NSLocalizedString("edit", comment: ""), message: NSLocalizedString("edit_schedule_name", comment: ""), preferredStyle: UIAlertController.Style.alert)
         
         alert.addTextField {(myTextField) in
             myTextField.placeholder = self.name
+            myTextField.delegate = self
         }
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default))
-        alert.addAction(UIAlertAction(title: "OK", style: .default) {(action) -> Void in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .default))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default) {(action) -> Void in
             if let text = alert.textFields?[0].text {
                 self.name = text
                 let indexPath = [IndexPath(row: 0, section: 0)]
@@ -73,9 +81,9 @@ class AddScheduleViewController: UIViewController, UITableViewDataSource, UITabl
         navigationController?.popViewController(animated: true)
     }
     func deleteCell(){
-        let alert = UIAlertController(title: "Delete Schedule", message: "Do you want to delete the schedule?", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default))
-        alert.addAction(UIAlertAction(title: "Ok", style: .default){(action) -> Void in
+        let alert = UIAlertController(title: NSLocalizedString("delete_schedule", comment: ""), message: NSLocalizedString("schedule_delete_message", comment: ""), preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .default))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default){(action) -> Void in
             self.editScheduleVCDelegate?.deleteDataFromViewController(indexPath: self.indexPath)
             self.navigationController?.popViewController(animated: true)
         })
@@ -87,15 +95,23 @@ class AddScheduleViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @IBAction func saveScheduleButton(_ sender: Any) {
-        let alert = UIAlertController(title: "Save Schedule", message: "Do you want to save the schedule?", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default))
-        alert.addAction(UIAlertAction(title: "Ok", style: .default){(action) -> Void in
+        let alert = UIAlertController(title: NSLocalizedString("save_schedule", comment: ""), message: NSLocalizedString("schedule_save_message", comment: ""), preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .default))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default){(action) -> Void in
             if self.dayArray.count == 0 {
-                let alert = UIAlertController(title: "Save Error", message: "Select the schedule day", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default))
+                let alert = UIAlertController(title: NSLocalizedString("save_error", comment: ""), message: NSLocalizedString("schedule_days_error_message", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default))
                 self.present(alert, animated:  true, completion: nil)
                 return
             }
+            
+            if self.startTime == self.endTime {
+                let alert = UIAlertController(title: NSLocalizedString("save_error", comment: ""), message: NSLocalizedString("schedule_times_error_message", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            
             let data = ScheduleData(name: self.name, onOff: self.onOffSwitch, day: self.dayArray, startTime: self.startTime, endTime: self.endTime)
             self.navigationController?.popViewController(animated: true)
             

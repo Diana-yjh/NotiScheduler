@@ -95,37 +95,38 @@ class DayOnOffCell: UITableViewCell {
         case 0:
             dayState = sunOnOff
             day = sun
-            text = "Sun"
+            text = NSLocalizedString("sun_day", comment: "")
             sunOnOff = buttonOnOff(dayState, day, text)
+            print("text = \(text)")
         case 1:
             dayState = monOnOff
             day = mon
-            text = "Mon"
+            text = NSLocalizedString("mon_day", comment: "")
             monOnOff = buttonOnOff(dayState, day, text)
         case 2:
             dayState = tueOnOff
             day = tue
-            text = "Tue"
+            text = NSLocalizedString("tues_day", comment: "")
             tueOnOff = buttonOnOff(dayState, day, text)
         case 3:
             dayState = wedOnOff
             day = wed
-            text = "Wed"
+            text = NSLocalizedString("wed_day", comment: "")
             wedOnOff = buttonOnOff(dayState, day, text)
         case 4:
             dayState = thurOnOff
             day = thur
-            text = "Thu"
+            text = NSLocalizedString("thurs_day", comment: "")
             thurOnOff = buttonOnOff(dayState, day, text)
         case 5:
             dayState = friOnOff
             day = fri
-            text = "Fri"
+            text = NSLocalizedString("fri_day", comment: "")
             friOnOff = buttonOnOff(dayState, day, text)
         case 6:
             dayState = satOnOff
             day = sat
-            text = "Sat"
+            text =  NSLocalizedString("sat_day", comment: "")
             satOnOff = buttonOnOff(dayState, day, text)
         default:
             return
@@ -135,7 +136,6 @@ class DayOnOffCell: UITableViewCell {
     
     func buttonOnOff(_ dayState: Bool, _ day: UIButton, _ text: String) -> Bool {
         let word = text.map{String($0)}[0]
-        print("dayState = \(dayState)")
         if dayState == false {
             // TODO
             day.setImage(UIImage(named: "\(word).circle.fill.green"), for: .normal)
@@ -150,32 +150,33 @@ class DayOnOffCell: UITableViewCell {
     }
     
     func editDayDefaultSetting(){
-        print("dayArray = \(dayArray)")
         for i in 0...dayArray.count - 1 {
             let text = dayArray[i]
             let word = text.map{String($0)}[0]
             switch text {
-            case "Mon":
+            case NSLocalizedString("sun_day", comment: ""):
+                setDaysOn(day: sun, word: word)
+                sunOnOff = true
+            case NSLocalizedString("mon_day", comment: ""):
                 setDaysOn(day: mon, word: word)
                 monOnOff = true
-            case "Tue":
+            case NSLocalizedString("tues_day", comment: ""):
                 setDaysOn(day: tue, word: word)
                 tueOnOff = true
-            case "Wed":
+            case NSLocalizedString("wed_day", comment: ""):
                 setDaysOn(day: wed, word: word)
                 wedOnOff = true
-            case "Thu":
+            case NSLocalizedString("thurs_day", comment: ""):
                 setDaysOn(day: thur, word: word)
                 thurOnOff = true
-            case "Fri":
+            case NSLocalizedString("fri_day", comment: ""):
                 setDaysOn(day: fri, word: word)
                 friOnOff = true
-            case "Sat":
+            case NSLocalizedString("saturday", comment: ""):
                 setDaysOn(day: sat, word: word)
                 satOnOff = true
             default:
-                setDaysOn(day: sun, word: word)
-                sunOnOff = true
+                return
             }
         }
     }
